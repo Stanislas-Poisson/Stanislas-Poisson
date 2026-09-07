@@ -15,34 +15,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create assets directory
-        run: mkdir -p assets
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-      - name: Fetch stats card
-        run: |
-          curl -sSL "https://github-readme-stats.vercel.app/api?username=Stanislas-Poisson&show_icons=true&theme=default&hide_title=true" -o assets/stats.svg.new
-
-      - name: Fetch top languages card
-        run: |
-          curl -sSL "https://github-readme-stats.vercel.app/api/top-langs/?username=Stanislas-Poisson&layout=compact&hide_title=true" -o assets/top-langs.svg.new
-
-      - name: Validate and replace stats card
-        run: |
-          if grep -q "<svg" assets/stats.svg.new; then
-            mv assets/stats.svg.new assets/stats.svg
-          else
-            echo "Stats card fetch failed or returned invalid content, keeping previous version."
-            rm -f assets/stats.svg.new
-          fi
-
-      - name: Validate and replace top languages card
-        run: |
-          if grep -q "<svg" assets/top-langs.svg.new; then
-            mv assets/top-langs.svg.new assets/top-langs.svg
-          else
-            echo "Top languages card fetch failed or returned invalid content, keeping previous version."
-            rm -f assets/top-langs.svg.new
-          fi
+      - name: Generate stats cards
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USERNAME: Stanislas-Poisson
+        run: python .github/scripts/generate_stats.py
 
       - name: Commit and push if changed
         run: |
