@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="120" viewBox="0 0 400 120">
+  <style>
+    .title { font: 600 16px sans-serif; fill: #333; }
+    .label { font: 14px sans-serif; fill: #555; }
+    .value { font: 600 14px sans-serif; fill: #0969da; }
+  </style>
+  <rect width="400" height="120" rx="8" fill="#fff" stroke="#e1e4e8" />
+  <text x="20" y="30" class="title">Stanislas-Poisson's GitHub Stats (public repos)</text>
+  <text x="20" y="60" class="label">Public repositories:</text>
+  <text x="220" y="60" class="value">7</text>
+  <text x="20" y="85" class="label">Total stars:</text>
+  <text x="220" y="85" class="value">89</text>
+  <text x="20" y="110" class="label">Total forks:</text>
+  <text x="220" y="110" class="value">20</text>
+</svg>

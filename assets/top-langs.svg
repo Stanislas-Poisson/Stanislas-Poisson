@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="208" viewBox="0 0 400 208">
+  <style>
+    .title { font: 600 16px sans-serif; fill: #333; }
+    .label { font: 13px sans-serif; fill: #555; }
+    .pct { font: 12px sans-serif; fill: #555; }
+  </style>
+  <rect width="400" height="208" rx="8" fill="#fff" stroke="#e1e4e8" />
+  <text x="20" y="30" class="title">Most used languages (public repos)</text>
+  
+  <text x="20" y="55" class="label">PHP</text>
+  <rect x="20" y="61" width="128.0" height="8" rx="4" fill="#0969da" />
+  <text x="158.0" y="68" class="pct">58.2%</text>
+  <text x="20" y="83" class="label">HTML</text>
+  <rect x="20" y="89" width="38.0" height="8" rx="4" fill="#0969da" />
+  <text x="68.0" y="96" class="pct">17.3%</text>
+  <text x="20" y="111" class="label">JavaScript</text>
+  <rect x="20" y="117" width="27.0" height="8" rx="4" fill="#0969da" />
+  <text x="57.0" y="124" class="pct">12.3%</text>
+  <text x="20" y="139" class="label">Python</text>
+  <rect x="20" y="145" width="21.5" height="8" rx="4" fill="#0969da" />
+  <text x="51.5" y="152" class="pct">9.8%</text>
+  <text x="20" y="167" class="label">Makefile</text>
+  <rect x="20" y="173" width="3.3" height="8" rx="4" fill="#0969da" />
+  <text x="33.3" y="180" class="pct">1.5%</text>
+  <text x="20" y="195" class="label">Dockerfile</text>
+  <rect x="20" y="201" width="2.2" height="8" rx="4" fill="#0969da" />
+  <text x="32.2" y="208" class="pct">1.0%</text>
+</svg>
