@@ -201,9 +201,10 @@ def format_count(n):
     return str(n)
 
 
-def render_stats_svg(npm_total, packagist_total, followers, height):
+def render_stats_svg(repo_count, npm_total, packagist_total, followers, height):
     """height is passed in so this card always matches the languages card."""
     rows_data = [
+        ("Repos publics :", str(repo_count)),
         ("npm (30 derniers jours) :", format_count(npm_total)),
         ("Packagist (total) :", format_count(packagist_total)),
         ("Followers :", str(followers)),
@@ -276,7 +277,7 @@ def main():
     lang_height = TOP_MARGIN + ROW_HEIGHT * len(top_langs) + BOTTOM_MARGIN
 
     with open("assets/stats.svg", "w", encoding="utf-8") as f:
-        f.write(render_stats_svg(npm_total, packagist_total, followers, height=lang_height))
+        f.write(render_stats_svg(len(repos), npm_total, packagist_total, followers, height=lang_height))
 
     with open("assets/top-langs.svg", "w", encoding="utf-8") as f:
         f.write(langs_svg)
