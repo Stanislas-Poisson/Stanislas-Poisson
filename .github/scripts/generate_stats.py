@@ -1,21 +1,17 @@
 """
 Generates two SVG cards (assets/stats.svg, assets/top-langs.svg) and a JSON
 file (assets/stats.json) for the profile README and for
-stanislas-poisson.fr, using the GitHub REST API plus the public npm and
-Packagist registries.
+stanislas-poisson.fr, using only the GitHub REST API.
 
-Auto-discovery: scans each owned public repo's root for a package.json
-(counted if not "private") and a composer.json, then pulls real download
-counts from npm and Packagist. No manual package list to maintain.
+GitHub-native metrics only (repos, gists, stars, followers) - no npm or
+Packagist here, since nothing is published from GitHub for this account.
 """
 
 import os
 import json
-import base64
+from datetime import datetime, timezone
 import urllib.request
 import urllib.error
-from datetime import datetime, timezone
-from urllib.parse import quote
 from collections import defaultdict
 
 USERNAME = os.environ["GH_USERNAME"]
@@ -54,36 +50,6 @@ def gh_get(url):
         return json.loads(resp.read().decode())
 
 
-def gh_get_raw_file(owner, repo, path, ref):
-    """Returns the raw text content of a file via the Contents API, or None."""
-    url = f"https://api.github.com/repos/{owner}/{repo}/contents/{path}?ref={ref}"
-    req = urllib.request.Request(url, headers=GH_HEADERS)
-    try:
-        with urllib.request.urlopen(req) as resp:
-            data = json.loads(resp.read().decode())
-    except urllib.error.HTTPError as e:
-        if e.code == 404:
-            return None
-        raise
-    if isinstance(data, dict) and data.get("encoding") == "base64":
-        return base64.b64decode(data["content"]).decode("utf-8", errors="ignore")
-    return None
-
-
-def public_get_json(url):
-    """For npm / Packagist: no auth needed. Returns None on 404 or error."""
-    req = urllib.request.Request(url, headers={"User-Agent": "zairakai-stats-bot"})
-    try:
-        with urllib.request.urlopen(req) as resp:
-            return json.loads(resp.read().decode())
-    except urllib.error.HTTPError as e:
-        if e.code == 404:
-            return None
-        raise
-    except Exception:
-        return None
-
-
 # ---------------------------------------------------------------------------
 # GitHub data
 # ---------------------------------------------------------------------------
@@ -101,9 +67,15 @@ def fetch_public_repos():
     return [r for r in repos if not r["fork"]]
 
 
-def fetch_follower_count():
+def fetch_profile():
+    """Single call for public_repos, public_gists and followers - all
+    GitHub-native counters, no external registries involved."""
     profile = gh_get(f"https://api.github.com/users/{USERNAME}")
-    return profile.get("followers", 0)
+    return {
+        "public_repos": profile.get("public_repos", 0),
+        "public_gists": profile.get("public_gists", 0),
+        "followers": profile.get("followers", 0),
+    }
 
 
 def language_totals(repos):
@@ -134,68 +106,6 @@ def bucket_top_n_with_rest(totals, top_n=3):
 
 
 # ---------------------------------------------------------------------------
-# Auto-discovery: npm / Packagist
-# ---------------------------------------------------------------------------
-
-def discover_packages(repos):
-    npm_packages, packagist_packages = [], []
-    for repo in repos:
-        owner = repo["owner"]["login"]
-        name = repo["name"]
-        ref = repo.get("default_branch") or "main"
-
-        pkg_json_raw = gh_get_raw_file(owner, name, "package.json", ref)
-        if pkg_json_raw:
-            try:
-                data = json.loads(pkg_json_raw)
-                pkg_name = data.get("name")
-                if pkg_name and not data.get("private", False):
-                    npm_packages.append(pkg_name)
-            except json.JSONDecodeError:
-                pass
-
-        composer_json_raw = gh_get_raw_file(owner, name, "composer.json", ref)
-        if composer_json_raw:
-            try:
-                data = json.loads(composer_json_raw)
-                pkg_name = data.get("name")
-                # "type": "project" means this is a Laravel app skeleton
-                # (e.g. left over from `composer create-project laravel/laravel`),
-                # not a published library - skip it, or we'd fetch Laravel's
-                # own download count instead of the repo's actual package.
-                is_project = data.get("type") == "project"
-                if pkg_name and "/" in pkg_name and not is_project:
-                    packagist_packages.append(pkg_name)
-            except json.JSONDecodeError:
-                pass
-
-    return npm_packages, packagist_packages
-
-
-def fetch_npm_downloads_total(packages):
-    total, details = 0, []
-    for name in packages:
-        encoded = quote(name, safe="")
-        data = public_get_json(f"https://api.npmjs.org/downloads/point/last-month/{encoded}")
-        downloads = data.get("downloads", 0) if data else 0
-        total += downloads
-        details.append({"name": name, "downloads_last_month": downloads})
-    return total, details
-
-
-def fetch_packagist_downloads_total(packages):
-    total, details = 0, []
-    for name in packages:
-        data = public_get_json(f"https://packagist.org/packages/{name}.json")
-        downloads = 0
-        if data:
-            downloads = data.get("package", {}).get("downloads", {}).get("total", 0)
-        total += downloads
-        details.append({"name": name, "downloads_total": downloads})
-    return total, details
-
-
-# ---------------------------------------------------------------------------
 # Rendering
 # ---------------------------------------------------------------------------
 
@@ -207,15 +117,15 @@ def format_count(n):
     return str(n)
 
 
-def render_stats_svg(repo_count, npm_total, packagist_total, followers, height, generated_at):
+def render_stats_svg(repo_count, gist_count, star_total, followers, height, generated_at):
     """height is passed in so this card always matches the languages card.
     generated_at is embedded as an SVG comment so the file content always
     changes on every run, even when the underlying numbers are identical -
     otherwise git sees no diff and silently skips committing this file."""
     rows_data = [
         ("Repos publics :", str(repo_count)),
-        ("npm (30 derniers jours) :", format_count(npm_total)),
-        ("Packagist (total) :", format_count(packagist_total)),
+        ("Gists publics :", str(gist_count)),
+        ("Total stars :", format_count(star_total)),
         ("Followers :", str(followers)),
     ]
     usable_height = height - TOP_MARGIN - BOTTOM_MARGIN
@@ -224,17 +134,15 @@ def render_stats_svg(repo_count, npm_total, packagist_total, followers, height, 
     for i, (label, value) in enumerate(rows_data):
         y = TOP_MARGIN + 10 + i * step
         rows.append(f"""
-  <text x="20" y="{y:.1f}" class="label">{label}</text>
-  <text x="260" y="{y:.1f}" class="value">{value}</text>""")
+  <text x="20" y="{y:.1f}" font-family="sans-serif" font-size="14" fill="#555">{label}</text>
+  <text x="260" y="{y:.1f}" font-family="sans-serif" font-size="14" font-weight="600" fill="#0969da">{value}</text>""")
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="420" height="{height}" viewBox="0 0 420 {height}">
   <!-- generated_at: {generated_at} -->
   <style>
     .title {{ font: 600 16px sans-serif; fill: #333; }}
-    .label {{ font: 14px sans-serif; fill: #555; }}
-    .value {{ font: 600 14px sans-serif; fill: #0969da; }}
   </style>
   <rect width="420" height="{height}" rx="8" fill="#fff" stroke="#e1e4e8" />
-  <text x="20" y="28" class="title">{USERNAME} · Packages &amp; Community</text>
+  <text x="20" y="28" class="title">{USERNAME} · GitHub Stats</text>
   {''.join(rows)}
 </svg>"""
 
@@ -247,9 +155,9 @@ def render_top_langs_svg(top_langs, generated_at):
         color = LANG_COLORS.get(lang, FALLBACK_COLOR)
         bar_width = 2.2 * pct
         rows.append(f"""
-  <text x="20" y="{y}" class="label">{lang}</text>
+  <text x="20" y="{y}" font-family="sans-serif" font-size="13" fill="#555">{lang}</text>
   <rect x="20" y="{y + 6}" width="{bar_width:.1f}" height="8" rx="4" fill="{color}" />
-  <text x="{20 + bar_width + 10:.1f}" y="{y + 13}" class="pct">{pct:.1f}%</text>""")
+  <text x="{20 + bar_width + 10:.1f}" y="{y + 13}" font-family="sans-serif" font-size="12" fill="#555">{pct:.1f}%</text>""")
         y += ROW_HEIGHT
 
     rows_svg = "".join(rows)
@@ -258,8 +166,6 @@ def render_top_langs_svg(top_langs, generated_at):
   <!-- generated_at: {generated_at} -->
   <style>
     .title {{ font: 600 16px sans-serif; fill: #333; }}
-    .label {{ font: 13px sans-serif; fill: #555; }}
-    .pct {{ font: 12px sans-serif; fill: #555; }}
   </style>
   <rect width="420" height="{height}" rx="8" fill="#fff" stroke="#e1e4e8" />
   <text x="20" y="30" class="title">Most used languages (public repos)</text>
@@ -277,42 +183,36 @@ def main():
     generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     repos = fetch_public_repos()
+    profile = fetch_profile()
+    star_total = sum(r.get("stargazers_count", 0) for r in repos)
 
     lang_totals = language_totals(repos)
     top_langs = bucket_top_n_with_rest(lang_totals, top_n=3)
-
-    npm_packages, packagist_packages = discover_packages(repos)
-    npm_total, npm_details = fetch_npm_downloads_total(npm_packages)
-    packagist_total, packagist_details = fetch_packagist_downloads_total(packagist_packages)
-    followers = fetch_follower_count()
 
     langs_svg = render_top_langs_svg(top_langs, generated_at)
     lang_height = TOP_MARGIN + ROW_HEIGHT * len(top_langs) + BOTTOM_MARGIN
 
     with open("assets/stats.svg", "w", encoding="utf-8") as f:
-        f.write(render_stats_svg(len(repos), npm_total, packagist_total, followers,
-                                  height=lang_height, generated_at=generated_at))
+        f.write(render_stats_svg(
+            profile["public_repos"], profile["public_gists"], star_total,
+            profile["followers"], height=lang_height, generated_at=generated_at))
 
     with open("assets/top-langs.svg", "w", encoding="utf-8") as f:
         f.write(langs_svg)
 
     stats_json = {
         "generated_at": generated_at,
-        "public_repos": len(repos),
-        "npm_downloads_last_month": npm_total,
-        "npm_packages": npm_details,
-        "packagist_downloads_total": packagist_total,
-        "packagist_packages": packagist_details,
-        "followers": followers,
+        "public_repos": profile["public_repos"],
+        "public_gists": profile["public_gists"],
+        "total_stars": star_total,
+        "followers": profile["followers"],
         "languages": top_langs,
     }
     with open("assets/stats.json", "w", encoding="utf-8") as f:
         json.dump(stats_json, f, indent=2, ensure_ascii=False)
 
-    print(f"{len(repos)} public repos scanned")
-    print(f"npm: {len(npm_packages)} packages, {npm_total} downloads (30d)")
-    print(f"Packagist: {len(packagist_packages)} packages, {packagist_total} downloads (total)")
-    print(f"Followers: {followers}")
+    print(f"{profile['public_repos']} public repos, {profile['public_gists']} gists, "
+          f"{star_total} stars, {profile['followers']} followers")
     print(f"Top languages: {top_langs}")
 
 
