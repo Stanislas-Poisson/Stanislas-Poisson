@@ -13,18 +13,23 @@ Senior Fullstack Engineer specialized in Laravel, Vue.js and Docker. I take frag
 - Industrialized environments: Docker, CI/CD, code quality tooling
 - Technical mentoring: standards, code review, onboarding
 
-## Currently building
-
-[Handbook][repo-handbook]: a personal RAG-based knowledge base used to guide AI coding tools on standards and best practices.
-
 ## Tech stack
 
 ![Laravel][badge-laravel] ![Vue.js][badge-vue] ![Docker][badge-docker] ![PHP][badge-php] ![JavaScript][badge-js] ![GitLab CI][badge-gitlab-ci] ![MySQL][badge-mysql] ![Redis][badge-redis]
 
 ## GitHub stats
 
-![GitHub stats][stats-overview]
-![Top languages][stats-top-langs]
+<p align="center">
+  <img src="assets/stats.svg" width="410" style="max-width: 100%;" alt="GitHub stats" />
+  <img src="assets/top-langs.svg" width="410" style="max-width: 100%;" alt="Top languages" />
+</p>
+
+## GitLab stats
+
+<p align="center">
+  <img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/stats.svg" width="410" style="max-width: 100%;" alt="GitLab stats" />
+  <img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/top-langs.svg" width="410" style="max-width: 100%;" alt="GitLab languages" />
+</p>
 
 ## A few things I've built
 
@@ -35,21 +40,18 @@ Senior Fullstack Engineer specialized in Laravel, Vue.js and Docker. I take frag
 
 ## Find me
 
-- 🔗 [stanislas-poisson.fr][website]
-- 💼 [LinkedIn][linkedin]
-- 🦊 [GitLab][gitlab]
-- 📧 contact@stanislas-poisson.fr
+[![Website][pill-website]][website] [![LinkedIn][pill-linkedin]][linkedin] [![GitLab][pill-gitlab]][gitlab] [![Email][pill-email]][email]
 
 <!-- Links -->
 [repo-fzc]: https://github.com/Stanislas-Poisson/French-zip-code
 [repo-tap]: https://github.com/Stanislas-Poisson/teams-auto-presence
 [repo-drf]: https://github.com/Stanislas-Poisson/devtools-resize-fix
-[repo-handbook]: https://gitlab.com/zairakai/handbook
 [gitlab]: https://gitlab.com/zairakai
 [website]: https://stanislas-poisson.fr
 [linkedin]: https://www.linkedin.com/in/stanislasp/
+[email]: mailto:contact@stanislas-poisson.fr
 
-<!-- Badges -->
+<!-- Badges - Stack -->
 [badge-experience]: https://img.shields.io/badge/Experience-10%2B_years-blue
 [badge-laravel]: https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white
 [badge-vue]: https://img.shields.io/badge/Vue.js-4FC08D?style=flat&logo=vuedotjs&logoColor=white
@@ -60,6 +62,8 @@ Senior Fullstack Engineer specialized in Laravel, Vue.js and Docker. I take frag
 [badge-mysql]: https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white
 [badge-redis]: https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white
 
-<!-- Stats (static, refreshed weekly by .github/workflows/update-stats.yml) -->
-[stats-overview]: ./assets/stats.svg
-[stats-top-langs]: ./assets/top-langs.svg
+<!-- Badges - Pills (mêmes couleurs que les pills de l'extension devtools-resize-fix) -->
+[pill-website]: https://img.shields.io/badge/stanislas--poisson.fr-2563EB?style=flat&logo=googlechrome&logoColor=white
+[pill-linkedin]: https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white
+[pill-gitlab]: https://img.shields.io/badge/GitLab-FC6D26?style=flat&logo=gitlab&logoColor=white
+[pill-email]: https://img.shields.io/badge/Email-555555?style=flat&logo=gmail&logoColor=white
