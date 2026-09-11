@@ -1,0 +1,23 @@
+{
+  "public_repos": 7,
+  "total_stars": 89,
+  "followers": 26,
+  "languages": [
+    {
+      "name": "PHP",
+      "pct": 57.7
+    },
+    {
+      "name": "HTML",
+      "pct": 17.2
+    },
+    {
+      "name": "JavaScript",
+      "pct": 12.2
+    },
+    {
+      "name": "Autres",
+      "pct": 12.9
+    }
+  ]
+}
