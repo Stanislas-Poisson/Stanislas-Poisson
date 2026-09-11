@@ -1,22 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="152" viewBox="0 0 400 152">
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="185" viewBox="0 0 420 185">
   <style>
     .title { font: 600 16px sans-serif; fill: #333; }
     .label { font: 13px sans-serif; fill: #555; }
     .pct { font: 12px sans-serif; fill: #555; }
   </style>
-  <rect width="400" height="152" rx="8" fill="#fff" stroke="#e1e4e8" />
+  <rect width="420" height="185" rx="8" fill="#fff" stroke="#e1e4e8" />
   <text x="20" y="30" class="title">Most used languages (public repos)</text>
   
   <text x="20" y="55" class="label">PHP</text>
   <rect x="20" y="61" width="126.9" height="8" rx="4" fill="#777bb4" />
   <text x="156.9" y="68" class="pct">57.7%</text>
-  <text x="20" y="83" class="label">HTML</text>
-  <rect x="20" y="89" width="37.8" height="8" rx="4" fill="#e34c26" />
-  <text x="67.8" y="96" class="pct">17.2%</text>
-  <text x="20" y="111" class="label">JavaScript</text>
-  <rect x="20" y="117" width="26.8" height="8" rx="4" fill="#f7df1e" />
-  <text x="56.8" y="124" class="pct">12.2%</text>
-  <text x="20" y="139" class="label">Autres</text>
-  <rect x="20" y="145" width="28.4" height="8" rx="4" fill="#8c8c8c" />
-  <text x="58.4" y="152" class="pct">12.9%</text>
+  <text x="20" y="85" class="label">HTML</text>
+  <rect x="20" y="91" width="37.8" height="8" rx="4" fill="#e34c26" />
+  <text x="67.8" y="98" class="pct">17.2%</text>
+  <text x="20" y="115" class="label">JavaScript</text>
+  <rect x="20" y="121" width="26.8" height="8" rx="4" fill="#f7df1e" />
+  <text x="56.8" y="128" class="pct">12.2%</text>
+  <text x="20" y="145" class="label">Autres</text>
+  <rect x="20" y="151" width="28.4" height="8" rx="4" fill="#8c8c8c" />
+  <text x="58.4" y="158" class="pct">12.9%</text>
 </svg>
