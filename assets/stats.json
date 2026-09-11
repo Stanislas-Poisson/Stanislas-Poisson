@@ -1,14 +1,8 @@
 {
-  "public_repos": 7,
-  "npm_downloads_last_month": 0,
-  "npm_packages": [],
-  "packagist_downloads_total": 64765011,
-  "packagist_packages": [
-    {
-      "name": "laravel/laravel",
-      "downloads_total": 64765011
-    }
-  ],
+  "generated_at": "2026-09-11T14:35:24Z",
+  "public_repos": 8,
+  "public_gists": 3,
+  "total_stars": 89,
   "followers": 26,
   "languages": [
     {

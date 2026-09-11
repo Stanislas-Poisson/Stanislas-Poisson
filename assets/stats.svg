@@ -1,18 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="420" height="185" viewBox="0 0 420 185">
+  <!-- generated_at: 2026-09-11T14:35:24Z -->
   <style>
     .title { font: 600 16px sans-serif; fill: #333; }
-    .label { font: 14px sans-serif; fill: #555; }
-    .value { font: 600 14px sans-serif; fill: #0969da; }
   </style>
   <rect width="420" height="185" rx="8" fill="#fff" stroke="#e1e4e8" />
-  <text x="20" y="28" class="title">Stanislas-Poisson · Packages &amp; Community</text>
+  <text x="20" y="28" class="title">Stanislas-Poisson · GitHub Stats</text>
   
-  <text x="20" y="55.0" class="label">Repos publics :</text>
-  <text x="260" y="55.0" class="value">7</text>
-  <text x="20" y="85.0" class="label">npm (30 derniers jours) :</text>
-  <text x="260" y="85.0" class="value">0</text>
-  <text x="20" y="115.0" class="label">Packagist (total) :</text>
-  <text x="260" y="115.0" class="value">64.8M</text>
-  <text x="20" y="145.0" class="label">Followers :</text>
-  <text x="260" y="145.0" class="value">26</text>
+  <text x="20" y="55.0" font-family="sans-serif" font-size="14" fill="#555">Repos publics :</text>
+  <text x="260" y="55.0" font-family="sans-serif" font-size="14" font-weight="600" fill="#0969da">8</text>
+  <text x="20" y="85.0" font-family="sans-serif" font-size="14" fill="#555">Gists publics :</text>
+  <text x="260" y="85.0" font-family="sans-serif" font-size="14" font-weight="600" fill="#0969da">3</text>
+  <text x="20" y="115.0" font-family="sans-serif" font-size="14" fill="#555">Total stars :</text>
+  <text x="260" y="115.0" font-family="sans-serif" font-size="14" font-weight="600" fill="#0969da">89</text>
+  <text x="20" y="145.0" font-family="sans-serif" font-size="14" fill="#555">Followers :</text>
+  <text x="260" y="145.0" font-family="sans-serif" font-size="14" font-weight="600" fill="#0969da">26</text>
 </svg>
