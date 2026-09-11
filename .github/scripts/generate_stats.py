@@ -14,6 +14,7 @@ import json
 import base64
 import urllib.request
 import urllib.error
+from datetime import datetime, timezone
 from urllib.parse import quote
 from collections import defaultdict
 
@@ -158,7 +159,12 @@ def discover_packages(repos):
             try:
                 data = json.loads(composer_json_raw)
                 pkg_name = data.get("name")
-                if pkg_name and "/" in pkg_name:
+                # "type": "project" means this is a Laravel app skeleton
+                # (e.g. left over from `composer create-project laravel/laravel`),
+                # not a published library - skip it, or we'd fetch Laravel's
+                # own download count instead of the repo's actual package.
+                is_project = data.get("type") == "project"
+                if pkg_name and "/" in pkg_name and not is_project:
                     packagist_packages.append(pkg_name)
             except json.JSONDecodeError:
                 pass
@@ -201,8 +207,11 @@ def format_count(n):
     return str(n)
 
 
-def render_stats_svg(repo_count, npm_total, packagist_total, followers, height):
-    """height is passed in so this card always matches the languages card."""
+def render_stats_svg(repo_count, npm_total, packagist_total, followers, height, generated_at):
+    """height is passed in so this card always matches the languages card.
+    generated_at is embedded as an SVG comment so the file content always
+    changes on every run, even when the underlying numbers are identical -
+    otherwise git sees no diff and silently skips committing this file."""
     rows_data = [
         ("Repos publics :", str(repo_count)),
         ("npm (30 derniers jours) :", format_count(npm_total)),
@@ -218,6 +227,7 @@ def render_stats_svg(repo_count, npm_total, packagist_total, followers, height):
   <text x="20" y="{y:.1f}" class="label">{label}</text>
   <text x="260" y="{y:.1f}" class="value">{value}</text>""")
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="420" height="{height}" viewBox="0 0 420 {height}">
+  <!-- generated_at: {generated_at} -->
   <style>
     .title {{ font: 600 16px sans-serif; fill: #333; }}
     .label {{ font: 14px sans-serif; fill: #555; }}
@@ -229,7 +239,7 @@ def render_stats_svg(repo_count, npm_total, packagist_total, followers, height):
 </svg>"""
 
 
-def render_top_langs_svg(top_langs):
+def render_top_langs_svg(top_langs, generated_at):
     height = TOP_MARGIN + ROW_HEIGHT * len(top_langs) + BOTTOM_MARGIN
     rows, y = [], TOP_MARGIN + 10
     for entry in top_langs:
@@ -245,6 +255,7 @@ def render_top_langs_svg(top_langs):
     rows_svg = "".join(rows)
 
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="420" height="{height}" viewBox="0 0 420 {height}">
+  <!-- generated_at: {generated_at} -->
   <style>
     .title {{ font: 600 16px sans-serif; fill: #333; }}
     .label {{ font: 13px sans-serif; fill: #555; }}
@@ -263,6 +274,8 @@ def render_top_langs_svg(top_langs):
 def main():
     os.makedirs("assets", exist_ok=True)
 
+    generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
     repos = fetch_public_repos()
 
     lang_totals = language_totals(repos)
@@ -273,16 +286,18 @@ def main():
     packagist_total, packagist_details = fetch_packagist_downloads_total(packagist_packages)
     followers = fetch_follower_count()
 
-    langs_svg = render_top_langs_svg(top_langs)
+    langs_svg = render_top_langs_svg(top_langs, generated_at)
     lang_height = TOP_MARGIN + ROW_HEIGHT * len(top_langs) + BOTTOM_MARGIN
 
     with open("assets/stats.svg", "w", encoding="utf-8") as f:
-        f.write(render_stats_svg(len(repos), npm_total, packagist_total, followers, height=lang_height))
+        f.write(render_stats_svg(len(repos), npm_total, packagist_total, followers,
+                                  height=lang_height, generated_at=generated_at))
 
     with open("assets/top-langs.svg", "w", encoding="utf-8") as f:
         f.write(langs_svg)
 
     stats_json = {
+        "generated_at": generated_at,
         "public_repos": len(repos),
         "npm_downloads_last_month": npm_total,
         "npm_packages": npm_details,
