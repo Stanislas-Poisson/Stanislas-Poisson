@@ -1,8 +1,8 @@
 """
-Generates two simple SVG cards (assets/stats.svg, assets/top-langs.svg) for
-the profile README, using only the GitHub REST API. No third-party stats
-service involved: this is fully self-contained and only depends on GitHub
-being up.
+Generates two SVG cards (assets/stats.svg, assets/top-langs.svg) and a JSON
+file (assets/stats.json) for the profile README and for
+stanislas-poisson.fr, using only the GitHub REST API. No third-party stats
+service involved: fully self-contained, only depends on GitHub being up.
 """
 
 import os
@@ -18,6 +18,16 @@ HEADERS = {
     "Accept": "application/vnd.github+json",
     "User-Agent": USERNAME,
 }
+
+LANG_COLORS = {
+    "PHP": "#777bb4",
+    "HTML": "#e34c26",
+    "JavaScript": "#f7df1e",
+    "TypeScript": "#3178c6",
+    "CSS": "#563d7c",
+    "Python": "#3572A5",
+}
+FALLBACK_COLOR = "#8c8c8c"
 
 
 def gh_get(url):
@@ -39,6 +49,11 @@ def fetch_public_repos():
     return [r for r in repos if not r["fork"]]
 
 
+def fetch_follower_count():
+    profile = gh_get(f"https://api.github.com/users/{USERNAME}")
+    return profile.get("followers", 0)
+
+
 def language_totals(repos):
     totals = defaultdict(int)
     for repo in repos:
@@ -51,7 +66,22 @@ def language_totals(repos):
     return totals
 
 
-def render_stats_svg(repo_count, star_count, fork_count):
+def bucket_top_n_with_rest(totals, top_n=3):
+    """Top N languages by byte weight, plus an 'Autres' bucket for the rest."""
+    top = sorted(totals.items(), key=lambda kv: kv[1], reverse=True)
+    total = sum(v for _, v in top) or 1
+    result, running = [], 0.0
+    for lang, val in top[:top_n]:
+        pct = round(100 * val / total, 1)
+        result.append({"name": lang, "pct": pct})
+        running += pct
+    rest = round(100 - running, 1)
+    if rest > 0.05:
+        result.append({"name": "Autres", "pct": rest})
+    return result
+
+
+def render_stats_svg(repo_count, star_count, follower_count):
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="400" height="120" viewBox="0 0 400 120">
   <style>
     .title {{ font: 600 16px sans-serif; fill: #333; }}
@@ -64,23 +94,21 @@ def render_stats_svg(repo_count, star_count, fork_count):
   <text x="220" y="60" class="value">{repo_count}</text>
   <text x="20" y="85" class="label">Total stars:</text>
   <text x="220" y="85" class="value">{star_count}</text>
-  <text x="20" y="110" class="label">Total forks:</text>
-  <text x="220" y="110" class="value">{fork_count}</text>
+  <text x="20" y="110" class="label">Followers:</text>
+  <text x="220" y="110" class="value">{follower_count}</text>
 </svg>"""
 
 
-def render_top_langs_svg(totals, top_n=6):
-    top = sorted(totals.items(), key=lambda kv: kv[1], reverse=True)[:top_n]
-    total_bytes = sum(v for _, v in top) or 1
-    height = 40 + 28 * len(top)
-    rows = []
-    y = 55
-    for lang, bytes_count in top:
-        pct = 100 * bytes_count / total_bytes
+def render_top_langs_svg(top_langs):
+    height = 40 + 28 * len(top_langs)
+    rows, y = [], 55
+    for entry in top_langs:
+        lang, pct = entry["name"], entry["pct"]
+        color = LANG_COLORS.get(lang, FALLBACK_COLOR)
         bar_width = 2.2 * pct
         rows.append(f"""
   <text x="20" y="{y}" class="label">{lang}</text>
-  <rect x="20" y="{y + 6}" width="{bar_width:.1f}" height="8" rx="4" fill="#0969da" />
+  <rect x="20" y="{y + 6}" width="{bar_width:.1f}" height="8" rx="4" fill="{color}" />
   <text x="{20 + bar_width + 10:.1f}" y="{y + 13}" class="pct">{pct:.1f}%</text>""")
         y += 28
 
@@ -104,17 +132,28 @@ def main():
     repos = fetch_public_repos()
     repo_count = len(repos)
     star_count = sum(r["stargazers_count"] for r in repos)
-    fork_count = sum(r["forks_count"] for r in repos)
+    follower_count = fetch_follower_count()
 
     with open("assets/stats.svg", "w", encoding="utf-8") as f:
-        f.write(render_stats_svg(repo_count, star_count, fork_count))
+        f.write(render_stats_svg(repo_count, star_count, follower_count))
 
-    totals = language_totals(repos)
+    lang_totals = language_totals(repos)
+    top_langs = bucket_top_n_with_rest(lang_totals, top_n=3)
+
     with open("assets/top-langs.svg", "w", encoding="utf-8") as f:
-        f.write(render_top_langs_svg(totals))
+        f.write(render_top_langs_svg(top_langs))
 
-    print(f"Generated stats for {repo_count} public repos, {star_count} stars, {fork_count} forks.")
-    print(f"Top languages: {sorted(totals.items(), key=lambda kv: kv[1], reverse=True)[:6]}")
+    stats_json = {
+        "public_repos": repo_count,
+        "total_stars": star_count,
+        "followers": follower_count,
+        "languages": top_langs,
+    }
+    with open("assets/stats.json", "w", encoding="utf-8") as f:
+        json.dump(stats_json, f, indent=2, ensure_ascii=False)
+
+    print(f"{repo_count} public repos, {star_count} stars, {follower_count} followers")
+    print(f"Top languages: {top_langs}")
 
 
 if __name__ == "__main__":
