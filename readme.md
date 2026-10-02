@@ -33,7 +33,8 @@ Senior Fullstack Engineer specialized in Laravel, Vue.js and Docker. I take frag
 
 ## A few things I've built
 
-- **[French-zip-code][repo-fzc]**: Laravel package maintaining a normalized database of France's zip codes, built from official INSEE data. 87 stars, still actively used and referenced on data.gouv.fr.
+- **[French-Postal-Code][repo-fpc]**: open dataset of the regions, departments, communes and postal codes of France, with one GPS point per postal code and the history of the changes, built from official INSEE, La Poste and BAN data. 87 stars, referenced on data.gouv.fr.
+- **[French-Postal-Code-Package][repo-fpcp]**: Composer package for Laravel and Symfony that ships this data, with models, relations and a command to load it into your database. On [Packagist][packagist-fpc].
 - **[teams-auto-presence][repo-tap]**: Chrome extension that automates Microsoft Teams presence status. Published on the Chrome Web Store.
 - **[devtools-resize-fix][repo-drf]**: Chrome extension fixing a Chromium layout bug. Also published on the Chrome Web Store.
 - **Zairakai Ecosystem**: personal SaaS & tooling ecosystem (Docker images, Laravel/TypeScript packages) on [gitlab.com/zairakai][gitlab].
@@ -43,7 +44,9 @@ Senior Fullstack Engineer specialized in Laravel, Vue.js and Docker. I take frag
 [![Website][pill-website]][website] [![LinkedIn][pill-linkedin]][linkedin] [![GitLab][pill-gitlab]][gitlab] [![Email][pill-email]][email]
 
 <!-- Links -->
-[repo-fzc]: https://github.com/Stanislas-Poisson/French-zip-code
+[repo-fpc]: https://github.com/Stanislas-Poisson/French-Postal-Code
+[repo-fpcp]: https://github.com/Stanislas-Poisson/French-Postal-Code-Package
+[packagist-fpc]: https://packagist.org/packages/stanislas-poisson/french-postal-code
 [repo-tap]: https://github.com/Stanislas-Poisson/teams-auto-presence
 [repo-drf]: https://github.com/Stanislas-Poisson/devtools-resize-fix
 [gitlab]: https://gitlab.com/zairakai
