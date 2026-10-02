@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="420" height="185" viewBox="0 0 420 185">
-  <!-- generated_at: 2026-09-28T12:45:01Z -->
+  <!-- generated_at: 2026-10-02T22:40:16Z -->
   <style>
     .title { font: 600 16px sans-serif; fill: #333; }
   </style>
@@ -7,7 +7,7 @@
   <text x="20" y="28" class="title">Stanislas-Poisson · GitHub Stats</text>
   
   <text x="20" y="55.0" font-family="sans-serif" font-size="14" fill="#555">Repos publics :</text>
-  <text x="260" y="55.0" font-family="sans-serif" font-size="14" font-weight="600" fill="#0969da">8</text>
+  <text x="260" y="55.0" font-family="sans-serif" font-size="14" font-weight="600" fill="#0969da">9</text>
   <text x="20" y="85.0" font-family="sans-serif" font-size="14" fill="#555">Gists publics :</text>
   <text x="260" y="85.0" font-family="sans-serif" font-size="14" font-weight="600" fill="#0969da">3</text>
   <text x="20" y="115.0" font-family="sans-serif" font-size="14" fill="#555">Total stars :</text>

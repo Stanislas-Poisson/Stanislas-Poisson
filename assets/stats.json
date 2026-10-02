@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-09-28T12:45:01Z",
-  "public_repos": 8,
+  "generated_at": "2026-10-02T22:40:16Z",
+  "public_repos": 9,
   "public_gists": 3,
   "total_stars": 89,
   "followers": 26,
   "languages": [
     {
       "name": "PHP",
-      "pct": 57.7
+      "pct": 79.5
     },
     {
       "name": "HTML",
-      "pct": 17.2
+      "pct": 7.2
     },
     {
       "name": "JavaScript",
-      "pct": 12.2
+      "pct": 5.2
     },
     {
       "name": "Autres",
-      "pct": 12.9
+      "pct": 8.1
     }
   ]
 }
