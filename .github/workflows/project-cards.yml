@@ -1,0 +1,40 @@
+name: Project cards
+
+# One statistics card per GitHub project, the overview card and the cards of the dataset French-Postal-Code.
+# The cards of the GitLab projects are built by the pipeline of zairakai/gitlab-profile with the same script.
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: project-cards
+
+jobs:
+  cards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # GH_TOKEN reads the traffic of the dataset repository, which needs push access to it.
+      - name: Build the cards
+        env:
+          PLATFORM: github
+          OUT_DIR: assets/projects
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: python3 .github/scripts/project_cards.py
+
+      - name: Commit the cards
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/projects
+          if git diff --staged --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "chore(stats): refresh the project cards [skip ci]"
+            git push
+          fi

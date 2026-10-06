@@ -1,0 +1,30 @@
+{
+  "github_owner": "Stanislas-Poisson",
+  "gitlab_group": "zairakai",
+  "dataset": {
+    "slug": "french-postal-code",
+    "repo": "Stanislas-Poisson/French-Postal-Code",
+    "data_gouv": "5a2d54f288ee382771f2cf4f"
+  },
+  "projects": [
+    {"slug": "kmark", "name": "KMark", "platform": "github", "repo": "Stanislas-Poisson/KMark", "registry": "packagist:stanislas-poisson/kmark"},
+    {"slug": "pptx-enigma", "name": "PPTX-Enigma", "platform": "github", "repo": "Stanislas-Poisson/pptx-enigma", "registry": "packagist:stanislas-poisson/pptx-enigma"},
+    {"slug": "php-dev-tools", "name": "php-dev-tools", "platform": "github", "repo": "Stanislas-Poisson/php-dev-tools", "registry": "packagist:stanislas-poisson/php-dev-tools"},
+    {"slug": "french-postal-code-package", "name": "French-Postal-Code-Package", "platform": "github", "repo": "Stanislas-Poisson/French-Postal-Code-Package", "registry": "packagist:stanislas-poisson/french-postal-code"},
+    {"slug": "devtools-resize-fix", "name": "devtools-resize-fix", "platform": "github", "repo": "Stanislas-Poisson/devtools-resize-fix"},
+    {"slug": "teams-auto-presence", "name": "teams-auto-presence", "platform": "github", "repo": "Stanislas-Poisson/teams-auto-presence"},
+    {"slug": "laravel-auth", "name": "laravel-auth", "platform": "gitlab", "repo": "zairakai/php-packages/laravel-auth", "registry": "packagist:zairakai/laravel-auth"},
+    {"slug": "laravel-twitch", "name": "laravel-twitch", "platform": "gitlab", "repo": "zairakai/php-packages/laravel-twitch", "registry": "packagist:zairakai/laravel-twitch"},
+    {"slug": "laravel-essentials", "name": "laravel-essentials", "platform": "gitlab", "repo": "zairakai/php-packages/laravel-essentials", "registry": "packagist:zairakai/laravel-essentials"},
+    {"slug": "laravel-eloquent", "name": "laravel-eloquent", "platform": "gitlab", "repo": "zairakai/php-packages/laravel-eloquent", "registry": "packagist:zairakai/laravel-eloquent"},
+    {"slug": "laravel-blade-components", "name": "laravel-blade-components", "platform": "gitlab", "repo": "zairakai/php-packages/laravel-blade-components", "registry": "packagist:zairakai/laravel-blade-components"},
+    {"slug": "laravel-activity", "name": "laravel-activity", "platform": "gitlab", "repo": "zairakai/php-packages/laravel-activity", "registry": "packagist:zairakai/laravel-activity"},
+    {"slug": "laravel-dev-tools", "name": "laravel-dev-tools", "platform": "gitlab", "repo": "zairakai/php-packages/laravel-dev-tools", "registry": "packagist:zairakai/laravel-dev-tools"},
+    {"slug": "vue-components", "name": "vue-components", "platform": "gitlab", "repo": "zairakai/npm-packages/vue-components", "registry": "npm:@zairakai/vue-components"},
+    {"slug": "mithril-scss", "name": "mithril-scss", "platform": "gitlab", "repo": "zairakai/npm-packages/mithril-scss", "registry": "npm:@zairakai/mithril-scss"},
+    {"slug": "js-i18n", "name": "js-i18n", "platform": "gitlab", "repo": "zairakai/npm-packages/js-i18n", "registry": "npm:@zairakai/js-i18n"},
+    {"slug": "js-http-client", "name": "js-http-client", "platform": "gitlab", "repo": "zairakai/npm-packages/js-http-client", "registry": "npm:@zairakai/js-http-client"},
+    {"slug": "js-utils", "name": "js-utils", "platform": "gitlab", "repo": "zairakai/npm-packages/js-utils", "registry": "npm:@zairakai/js-utils"},
+    {"slug": "js-dev-tools", "name": "js-dev-tools", "platform": "gitlab", "repo": "zairakai/npm-packages/js-dev-tools", "registry": "npm:@zairakai/js-dev-tools"}
+  ]
+}
