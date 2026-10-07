@@ -39,6 +39,31 @@ Senior Fullstack Engineer specialized in Laravel, Vue.js and Docker. I take frag
 - **[devtools-resize-fix][repo-drf]**: Chrome extension fixing a Chromium layout bug. Also published on the Chrome Web Store.
 - **Zairakai Ecosystem**: personal SaaS & tooling ecosystem (Docker images, Laravel/TypeScript packages) on [gitlab.com/zairakai][gitlab].
 
+## Packages and projects
+
+<p align="center">
+  <img src="assets/projects/overview-github.svg" width="410" style="max-width: 100%;" alt="GitHub projects" />
+  <img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/overview-gitlab.svg" width="410" style="max-width: 100%;" alt="GitLab projects" />
+</p>
+
+### PHP (Packagist)
+
+<p align="center">
+  <a href="https://github.com/Stanislas-Poisson/KMark"><img src="assets/projects/kmark.svg" width="410" style="max-width: 100%;" alt="KMark" /></a>
+  <a href="https://github.com/Stanislas-Poisson/pptx-enigma"><img src="assets/projects/pptx-enigma.svg" width="410" style="max-width: 100%;" alt="PPTX-Enigma" /></a>
+  <a href="https://github.com/Stanislas-Poisson/php-dev-tools"><img src="assets/projects/php-dev-tools.svg" width="410" style="max-width: 100%;" alt="php-dev-tools" /></a>
+  <a href="https://github.com/Stanislas-Poisson/French-Postal-Code-Package"><img src="assets/projects/french-postal-code-package.svg" width="410" style="max-width: 100%;" alt="French-Postal-Code-Package" /></a>
+</p>
+
+### Chrome extensions
+
+<p align="center">
+  <a href="https://github.com/Stanislas-Poisson/devtools-resize-fix"><img src="assets/projects/devtools-resize-fix.svg" width="410" style="max-width: 100%;" alt="devtools-resize-fix" /></a>
+  <a href="https://github.com/Stanislas-Poisson/teams-auto-presence"><img src="assets/projects/teams-auto-presence.svg" width="410" style="max-width: 100%;" alt="teams-auto-presence" /></a>
+</p>
+
+*Versions, downloads and activity refreshed automatically by GitHub Actions. Registry: [Packagist](https://packagist.org/packages/stanislas-poisson/).*
+
 ## Find me
 
 [![Website][pill-website]][website] [![LinkedIn][pill-linkedin]][linkedin] [![GitLab][pill-gitlab]][gitlab] [![Email][pill-email]][email]
