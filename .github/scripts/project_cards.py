@@ -11,6 +11,7 @@ Environment:
     GH_TOKEN         GitHub token. Reading the traffic of the dataset repository needs push access
     GITLAB_API_TOKEN GitLab token that can read the group (open issues are hidden without one)
     PROJECTS         path of the project list (default .github/projects.json)
+    GITLAB_MIN_INTERVAL  seconds between two requests to gitlab.com (default 0.8)
 """
 
 from __future__ import annotations
@@ -20,6 +21,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -32,6 +34,14 @@ OUT_DIR = Path(os.environ.get("OUT_DIR", "assets/projects"))
 GH_TOKEN = os.environ.get("GH_TOKEN", "")
 GITLAB_TOKEN = os.environ.get("GITLAB_API_TOKEN", "")
 PROJECTS = Path(os.environ.get("PROJECTS", ".github/projects.json"))
+
+# Transient statuses worth retrying: rate limit and server-side errors.
+RETRY_STATUSES = (429, 500, 502, 503, 504)
+MAX_ATTEMPTS = 4
+MAX_WAIT = 60
+# GitLab.com limits an authenticated user to a burst of 100 requests a minute: stay below it.
+GITLAB_MIN_INTERVAL = float(os.environ.get("GITLAB_MIN_INTERVAL", "0.8"))
+_last_gitlab_call = 0.0
 
 DATA_GOUV_LOGO_URL = "https://www.data.gouv.fr/nuxt_images/favicon.svg"
 GITHUB_ICON = (
@@ -46,15 +56,40 @@ GITHUB_ICON = (
 GITLAB_ICON = "M12 22.4 1.5 14.8l1.6-4.9L6.2 2.4l2.2 6.6h7.2l2.2-6.6 3.1 7.5 1.6 4.9z"
 
 
+def throttle(url: str) -> None:
+    """Spaces the requests sent to gitlab.com."""
+    global _last_gitlab_call
+    if url.startswith("https://gitlab.com/"):
+        wait = GITLAB_MIN_INTERVAL - (time.monotonic() - _last_gitlab_call)
+        if wait > 0:
+            time.sleep(wait)
+        _last_gitlab_call = time.monotonic()
+
+
 def fetch(url: str, headers: dict | None = None, *, binary: bool = False):
     """Returns the decoded JSON (or the raw bytes) of a URL, None when it cannot be read."""
     request = urllib.request.Request(url, headers={"User-Agent": "project-cards", **(headers or {})})
-    try:
-        with urllib.request.urlopen(request, timeout=30) as response:
-            body = response.read()
-    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as error:
-        print(f"warning: cannot read {url}: {error}", file=sys.stderr)
-        return None
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        throttle(url)
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                body = response.read()
+            break
+        except urllib.error.HTTPError as error:
+            if error.code in RETRY_STATUSES and attempt < MAX_ATTEMPTS:
+                retry_after = error.headers.get("Retry-After", "")
+                time.sleep(min(int(retry_after) if retry_after.isdigit() else 2**attempt, MAX_WAIT))
+                continue
+            # The response body of an HTTP error says which permission is missing.
+            detail = error.read().decode("utf-8", errors="replace")[:300]
+            print(f"warning: cannot read {url}: {error} {detail}", file=sys.stderr)
+            return None
+        except (urllib.error.URLError, TimeoutError) as error:
+            if attempt < MAX_ATTEMPTS:
+                time.sleep(min(2**attempt, MAX_WAIT))
+                continue
+            print(f"warning: cannot read {url}: {error}", file=sys.stderr)
+            return None
     try:
         return body if binary else json.loads(body)
     except json.JSONDecodeError:
