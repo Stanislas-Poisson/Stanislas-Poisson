@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="420" height="185" viewBox="0 0 420 185">
-  <!-- generated_at: 2026-10-07T15:55:46Z -->
+  <!-- generated_at: 2026-10-12T14:15:44Z -->
   <style>
     .title { font: 600 16px sans-serif; fill: #333; }
   </style>
@@ -7,15 +7,15 @@
   <text x="20" y="30" class="title">Most used languages (public repos)</text>
   
   <text x="20" y="55" font-family="sans-serif" font-size="13" fill="#555">PHP</text>
-  <rect x="20" y="61" width="185.5" height="8" rx="4" fill="#777bb4" />
-  <text x="215.5" y="68" font-family="sans-serif" font-size="12" fill="#555">84.3%</text>
-  <text x="20" y="85" font-family="sans-serif" font-size="13" fill="#555">HTML</text>
-  <rect x="20" y="91" width="11.2" height="8" rx="4" fill="#e34c26" />
-  <text x="41.2" y="98" font-family="sans-serif" font-size="12" fill="#555">5.1%</text>
-  <text x="20" y="115" font-family="sans-serif" font-size="13" fill="#555">JavaScript</text>
-  <rect x="20" y="121" width="8.4" height="8" rx="4" fill="#f7df1e" />
-  <text x="38.4" y="128" font-family="sans-serif" font-size="12" fill="#555">3.8%</text>
+  <rect x="20" y="61" width="178.0" height="8" rx="4" fill="#777bb4" />
+  <text x="208.0" y="68" font-family="sans-serif" font-size="12" fill="#555">80.9%</text>
+  <text x="20" y="85" font-family="sans-serif" font-size="13" fill="#555">JavaScript</text>
+  <rect x="20" y="91" width="18.7" height="8" rx="4" fill="#f7df1e" />
+  <text x="48.7" y="98" font-family="sans-serif" font-size="12" fill="#555">8.5%</text>
+  <text x="20" y="115" font-family="sans-serif" font-size="13" fill="#555">HTML</text>
+  <rect x="20" y="121" width="10.8" height="8" rx="4" fill="#e34c26" />
+  <text x="40.8" y="128" font-family="sans-serif" font-size="12" fill="#555">4.9%</text>
   <text x="20" y="145" font-family="sans-serif" font-size="13" fill="#555">Autres</text>
-  <rect x="20" y="151" width="15.0" height="8" rx="4" fill="#8c8c8c" />
-  <text x="45.0" y="158" font-family="sans-serif" font-size="12" fill="#555">6.8%</text>
+  <rect x="20" y="151" width="12.5" height="8" rx="4" fill="#8c8c8c" />
+  <text x="42.5" y="158" font-family="sans-serif" font-size="12" fill="#555">5.7%</text>
 </svg>
