@@ -12,7 +12,6 @@
     {"slug": "php-dev-tools", "name": "php-dev-tools", "platform": "github", "repo": "Stanislas-Poisson/php-dev-tools", "registry": "packagist:stanislas-poisson/php-dev-tools"},
     {"slug": "french-postal-code-package", "name": "French-Postal-Code-Package", "platform": "github", "repo": "Stanislas-Poisson/French-Postal-Code-Package", "registry": "packagist:stanislas-poisson/french-postal-code"},
     {"slug": "devtools-resize-fix", "name": "devtools-resize-fix", "platform": "github", "repo": "Stanislas-Poisson/devtools-resize-fix"},
-    {"slug": "teams-auto-presence", "name": "teams-auto-presence", "platform": "github", "repo": "Stanislas-Poisson/teams-auto-presence"},
     {"slug": "laravel-auth", "name": "laravel-auth", "platform": "gitlab", "repo": "zairakai/php-packages/laravel-auth", "registry": "packagist:zairakai/laravel-auth"},
     {"slug": "laravel-twitch", "name": "laravel-twitch", "platform": "gitlab", "repo": "zairakai/php-packages/laravel-twitch", "registry": "packagist:zairakai/laravel-twitch"},
     {"slug": "laravel-essentials", "name": "laravel-essentials", "platform": "gitlab", "repo": "zairakai/php-packages/laravel-essentials", "registry": "packagist:zairakai/laravel-essentials"},
