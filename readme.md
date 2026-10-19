@@ -47,65 +47,15 @@ The full resume is on [stanislas-poisson.fr][website] ([PDF][cv-pdf]).
 
 ## Open source
 
-Since 2024 I build an open source ecosystem in the open, with live coding on [Twitch][twitch] (400+ followers, 2,000+ hours streamed, close to 930 hours of code): Laravel and TypeScript packages, production Docker images and shared quality tooling, documented on GitLab Pages. The cards below refresh themselves every week.
+Since 2024 I build an open source ecosystem in the open, with live coding on [Twitch][twitch] (400+ followers, 2,000+ hours streamed, close to 930 hours of code).
 
-### French Postal Code
-
-Open dataset of the regions, departments, communes and postal codes of France, with one GPS point per postal code and the history of the changes, built from INSEE, La Poste and the Base Adresse Nationale. 87 stars, listed on data.gouv.fr, with a [Composer package][packagist-fpc] for Laravel and Symfony.
-
-<p align="center">
-  <img src="assets/projects/french-postal-code-dataset.svg" width="838" style="max-width: 100%;" alt="French Postal Code dataset" />
-  <img src="assets/projects/french-postal-code-usage.svg" width="838" style="max-width: 100%;" alt="French Postal Code usage" />
-</p>
-
-### On GitHub
-
-<p align="center">
-  <img src="assets/projects/overview-github.svg" width="410" style="max-width: 100%;" alt="GitHub projects overview" />
-</p>
-
-<p align="center">
-  <a href="https://github.com/Stanislas-Poisson/KMark"><img src="assets/projects/kmark.svg" width="410" style="max-width: 100%;" alt="KMark" /></a>
-  <a href="https://github.com/Stanislas-Poisson/pptx-enigma"><img src="assets/projects/pptx-enigma.svg" width="410" style="max-width: 100%;" alt="PPTX-Enigma" /></a>
-  <a href="https://github.com/Stanislas-Poisson/php-dev-tools"><img src="assets/projects/php-dev-tools.svg" width="410" style="max-width: 100%;" alt="php-dev-tools" /></a>
-  <a href="https://github.com/Stanislas-Poisson/French-Postal-Code-Package"><img src="assets/projects/french-postal-code-package.svg" width="410" style="max-width: 100%;" alt="French-Postal-Code-Package" /></a>
-  <a href="https://github.com/Stanislas-Poisson/devtools-resize-fix"><img src="assets/projects/devtools-resize-fix.svg" width="410" style="max-width: 100%;" alt="devtools-resize-fix" /></a>
-</p>
-
-### On GitLab
-
-<p align="center">
-  <img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/overview-gitlab.svg" width="410" style="max-width: 100%;" alt="GitLab projects overview" />
-</p>
-
-<details>
-<summary>Laravel packages (Packagist)</summary>
-
-<p align="center">
-  <a href="https://gitlab.com/zairakai/php-packages/laravel-activity"><img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/laravel-activity.svg" width="410" style="max-width: 100%;" alt="Laravel activity log" /></a>
-  <a href="https://gitlab.com/zairakai/php-packages/laravel-auth"><img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/laravel-auth.svg" width="410" style="max-width: 100%;" alt="Laravel authentication" /></a>
-  <a href="https://gitlab.com/zairakai/php-packages/laravel-blade-components"><img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/laravel-blade-components.svg" width="410" style="max-width: 100%;" alt="Laravel Blade components" /></a>
-  <a href="https://gitlab.com/zairakai/php-packages/laravel-dev-tools"><img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/laravel-dev-tools.svg" width="410" style="max-width: 100%;" alt="Laravel dev tools" /></a>
-  <a href="https://gitlab.com/zairakai/php-packages/laravel-eloquent"><img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/laravel-eloquent.svg" width="410" style="max-width: 100%;" alt="Laravel Eloquent" /></a>
-  <a href="https://gitlab.com/zairakai/php-packages/laravel-essentials"><img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/laravel-essentials.svg" width="410" style="max-width: 100%;" alt="Laravel essentials" /></a>
-  <a href="https://gitlab.com/zairakai/php-packages/laravel-twitch"><img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/laravel-twitch.svg" width="410" style="max-width: 100%;" alt="Laravel Twitch" /></a>
-</p>
-
-</details>
-
-<details>
-<summary>TypeScript packages (npm)</summary>
-
-<p align="center">
-  <a href="https://gitlab.com/zairakai/npm-packages/js-dev-tools"><img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/js-dev-tools.svg" width="410" style="max-width: 100%;" alt="js-dev-tools" /></a>
-  <a href="https://gitlab.com/zairakai/npm-packages/js-http-client"><img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/js-http-client.svg" width="410" style="max-width: 100%;" alt="js-http-client" /></a>
-  <a href="https://gitlab.com/zairakai/npm-packages/js-i18n"><img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/js-i18n.svg" width="410" style="max-width: 100%;" alt="js-i18n" /></a>
-  <a href="https://gitlab.com/zairakai/npm-packages/js-utils"><img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/js-utils.svg" width="410" style="max-width: 100%;" alt="js-utils" /></a>
-  <a href="https://gitlab.com/zairakai/npm-packages/mithril-scss"><img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/mithril-scss.svg" width="410" style="max-width: 100%;" alt="mithril-scss" /></a>
-  <a href="https://gitlab.com/zairakai/npm-packages/vue-components"><img src="https://gitlab.com/zairakai/gitlab-profile/-/raw/main/assets/projects/vue-components.svg" width="410" style="max-width: 100%;" alt="vue-components" /></a>
-</p>
-
-</details>
+- **[French Postal Code][repo-fpc]**: open dataset of the regions, departments, communes and postal codes of France, with one GPS point per postal code and the history of the changes, built from INSEE, La Poste and the Base Adresse Nationale. 87 stars, listed on data.gouv.fr, SQL, JSON and CSV exports.
+- **[French-Postal-Code-Package][repo-fpcp]**: the same data as a Composer package for Laravel and Symfony, with models, relations and a command to load it into your database. On [Packagist][packagist-fpc].
+- **[Zairakai Ecosystem][gitlab]**: 7 Laravel packages and 6 TypeScript packages (HTTP client, i18n, accessible Vue 3 components), production Docker images and about 20 documented public repositories, on GitLab.
+- **[php-dev-tools][repo-pdt]** and **[js-dev-tools][repo-jdt]**: the shared quality tooling of the ecosystem (PHPStan, Rector, Pint, ESLint, Vitest).
+- **[devtools-resize-fix][repo-drf]**: Chrome extension fixing a Chromium layout bug, 166 installs in 3 months on the Chrome Web Store.
+- **[job-application-tracker][repo-jat]**: open source browser extension to track job applications, with the data kept in the browser.
+- **[KMark][repo-kmark]** (PHP Markdown parser) and **[pptx-enigma][repo-pptx]** (voice-over notes from PPTX files).
 
 ## GitHub stats
 
@@ -126,7 +76,15 @@ Open dataset of the regions, departments, communes and postal codes of France, w
 [![Website][pill-website]][website] [![LinkedIn][pill-linkedin]][linkedin] [![GitLab][pill-gitlab]][gitlab] [![Twitch][pill-twitch]][twitch] [![Email][pill-email]][email]
 
 <!-- Links -->
+[repo-fpc]: https://github.com/Stanislas-Poisson/French-Postal-Code
+[repo-fpcp]: https://github.com/Stanislas-Poisson/French-Postal-Code-Package
 [packagist-fpc]: https://packagist.org/packages/stanislas-poisson/french-postal-code
+[repo-pdt]: https://github.com/Stanislas-Poisson/php-dev-tools
+[repo-jdt]: https://github.com/Stanislas-Poisson/js-dev-tools
+[repo-drf]: https://github.com/Stanislas-Poisson/devtools-resize-fix
+[repo-jat]: https://github.com/Stanislas-Poisson/job-application-tracker
+[repo-kmark]: https://github.com/Stanislas-Poisson/KMark
+[repo-pptx]: https://github.com/Stanislas-Poisson/pptx-enigma
 [gitlab]: https://gitlab.com/zairakai
 [twitch]: https://twitch.tv/zairakai
 [website]: https://stanislas-poisson.fr
