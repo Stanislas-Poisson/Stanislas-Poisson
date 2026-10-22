@@ -143,12 +143,41 @@ def registry(spec: str | None) -> dict:
             "monthly": downloads.get("monthly"),
             "total": downloads.get("total"),
             "stars": package.get("favers"),
+            "details": {
+                "name": name,
+                "downloads": {"daily": downloads.get("daily"), "monthly": downloads.get("monthly"), "total": downloads.get("total")},
+                "favers": package.get("favers"),
+                "dependents": package.get("dependents"),
+                "suggesters": package.get("suggesters"),
+                "versions": len(package.get("versions", {})),
+                "latest_release_at": (releases[0] or {}).get("time"),
+                "language": package.get("language"),
+            },
         }
     quoted = urllib.parse.quote(name, safe="@")
     latest = fetch(f"https://registry.npmjs.org/{quoted.replace('/', '%2f')}/latest") or {}
     month = fetch(f"https://api.npmjs.org/downloads/point/last-month/{quoted}") or {}
     year = fetch(f"https://api.npmjs.org/downloads/point/last-year/{quoted}") or {}
-    return {"version": latest.get("version"), "monthly": month.get("downloads"), "total": year.get("downloads"), "total_label": "downloads / year"}
+    meta = fetch(f"https://registry.npmjs.org/{quoted.replace('/', '%2f')}") or {}
+    day = fetch(f"https://api.npmjs.org/downloads/point/last-day/{quoted}") or {}
+    week = fetch(f"https://api.npmjs.org/downloads/point/last-week/{quoted}") or {}
+    return {
+        "version": latest.get("version"),
+        "monthly": month.get("downloads"),
+        "total": year.get("downloads"),
+        "total_label": "downloads / year",
+        "details": {
+            "name": name,
+            "downloads": {"daily": day.get("downloads"), "weekly": week.get("downloads"), "monthly": month.get("downloads"), "yearly": year.get("downloads")},
+            "versions": len(meta.get("versions", {})),
+            "created_at": meta.get("time", {}).get("created"),
+            "latest_release_at": meta.get("time", {}).get(latest.get("version", "")),
+            "license": latest.get("license"),
+            "maintainers": len(meta.get("maintainers", [])),
+            "unpacked_size": (latest.get("dist") or {}).get("unpackedSize"),
+            "dependencies": len(latest.get("dependencies", {})),
+        },
+    }
 
 
 def merge_traffic(history: dict, kind: str, payload: dict | None) -> None:
@@ -166,6 +195,97 @@ def read_traffic(repo: str, history: dict) -> tuple[dict, dict | None]:
     merge_traffic(history, "views", views)
     merge_traffic(history, "clones", github(f"/repos/{repo}/traffic/clones"))
     return history, views
+
+
+def since_at(history: dict) -> str | None:
+    """Datetime of the first day of the traffic history."""
+    first = min(history.get("views", {}) | history.get("clones", {}), default=None)
+    return f"{first}T00:00:00Z" if first else None
+
+
+def fetch_total(url: str, headers: dict | None = None) -> int | None:
+    """Number of items of a paginated list: reads the last page of `per_page=1` (GitHub) or `X-Total` (GitLab)."""
+    request = urllib.request.Request(url, headers={"User-Agent": "project-cards", **(headers or {})})
+    throttle(url)
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            if response.headers.get("X-Total"):
+                return int(response.headers["X-Total"])
+            last = re.search(r'[?&]page=(\d+)[^>]*>; rel="last"', response.headers.get("Link", ""))
+            if last:
+                return int(last.group(1))
+            body = json.loads(response.read())
+            return len(body) if isinstance(body, list) else None
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError):
+        return None
+
+
+def github_headers() -> dict:
+    headers = {"Accept": "application/vnd.github+json"}
+    if GH_TOKEN:
+        headers["Authorization"] = f"Bearer {GH_TOKEN}"
+    return headers
+
+
+def share(languages: dict) -> dict:
+    """Bytes of code by language -> {language: {"bytes": n, "percent": p}}."""
+    total = sum(languages.values()) or 1
+    return {name: {"bytes": size, "percent": round(size * 100 / total, 1)} for name, size in sorted(languages.items(), key=lambda i: -i[1])}
+
+
+def github_details(repo: str, info: dict, releases: list, history: dict | None) -> dict:
+    """Everything useful that GitHub says about a repository, for the JSON file (the cards use a part of it)."""
+    api = f"https://api.github.com/repos/{repo}"
+    headers = github_headers()
+    community = github(f"/repos/{repo}/community/profile") or {}
+    details = {
+        "id": f"github:{repo}",
+        "description": info.get("description"),
+        "homepage": info.get("homepage") or None,
+        "topics": info.get("topics", []),
+        "license": (info.get("license") or {}).get("spdx_id"),
+        "visibility": info.get("visibility"),
+        "default_branch": info.get("default_branch"),
+        "is_fork": info.get("fork"),
+        "is_archived": info.get("archived"),
+        "created_at": info.get("created_at"),
+        "pushed_at": info.get("pushed_at"),
+        "updated_at": info.get("updated_at"),
+        "size_kb": info.get("size"),
+        "language": info.get("language"),
+        "languages": share(github(f"/repos/{repo}/languages") or {}),
+        "counts": {
+            "stars": info.get("stargazers_count"),
+            "forks": info.get("forks_count"),
+            "watchers": info.get("subscribers_count"),
+            "open_issues_and_prs": info.get("open_issues_count"),
+            "open_pull_requests": fetch_total(f"{api}/pulls?state=open&per_page=1", headers),
+            "pull_requests": fetch_total(f"{api}/pulls?state=all&per_page=1", headers),
+            "commits": fetch_total(f"{api}/commits?per_page=1", headers),
+            "contributors": fetch_total(f"{api}/contributors?per_page=1&anon=1", headers),
+            "branches": fetch_total(f"{api}/branches?per_page=1", headers),
+            "tags": fetch_total(f"{api}/tags?per_page=1", headers),
+            "releases": len(releases),
+        },
+        "community_health_percent": community.get("health_percentage"),
+        "releases": [
+            {
+                "tag": r.get("tag_name"),
+                "published_at": r.get("published_at"),
+                "prerelease": r.get("prerelease"),
+                "downloads": sum(a["download_count"] for a in r.get("assets", [])),
+                "assets": [{"name": a["name"], "size": a["size"], "downloads": a["download_count"]} for a in r.get("assets", [])],
+            }
+            for r in releases
+        ],
+    }
+    if history is not None:
+        details["traffic"] = {
+            "since_at": since_at(history),
+            "referrers": github(f"/repos/{repo}/traffic/popular/referrers") or [],
+            "paths": github(f"/repos/{repo}/traffic/popular/paths") or [],
+        }
+    return details
 
 
 def collect_github(project: dict, previous: dict) -> dict:
@@ -196,9 +316,46 @@ def collect_github(project: dict, previous: dict) -> dict:
             "visitors_14d": visitors,
             "views_total": sum(d["count"] for d in history.get("views", {}).values()) or None,
             "clones_total": sum(d["count"] for d in history.get("clones", {}).values()) or None,
-            "tracked_since": min(history.get("views", {}) | history.get("clones", {}), default=None),
+            "traffic_since_at": since_at(history),
         }
+    # Nothing of a private repository goes into the JSON file, which is public.
+    if info.get("private") is not True:
+        hosted["details"] = github_details(repo, info, releases, history if GH_TOKEN else None)
     return hosted
+
+
+def gitlab_details(encoded: str, info: dict) -> dict:
+    """Everything useful that GitLab says about a project, for the JSON file."""
+    api = f"https://gitlab.com/api/v4/projects/{encoded}"
+    headers = {"PRIVATE-TOKEN": GITLAB_TOKEN} if GITLAB_TOKEN else {}
+    statistics = (gitlab(f"/projects/{encoded}?statistics=true") or {}).get("statistics") or {}
+    pipeline = (gitlab(f"/projects/{encoded}/pipelines?ref={info.get('default_branch', 'main')}&per_page=1") or [{}]) or [{}]
+    return {
+        "id": f"gitlab:{info.get('path_with_namespace')}",
+        "description": info.get("description"),
+        "topics": info.get("topics", []),
+        "visibility": info.get("visibility"),
+        "default_branch": info.get("default_branch"),
+        "is_fork": bool(info.get("forked_from_project")),
+        "is_archived": info.get("archived"),
+        "created_at": info.get("created_at"),
+        "pushed_at": info.get("last_activity_at"),
+        "size_kb": round(statistics["repository_size"] / 1024) if statistics.get("repository_size") is not None else None,
+        "languages": {name: {"percent": percent} for name, percent in (gitlab(f"/projects/{encoded}/languages") or {}).items()},
+        "counts": {
+            "stars": info.get("star_count"),
+            "forks": info.get("forks_count"),
+            "open_issues": info.get("open_issues_count"),
+            "open_merge_requests": fetch_total(f"{api}/merge_requests?state=opened&per_page=1", headers),
+            "merged_merge_requests": fetch_total(f"{api}/merge_requests?state=merged&per_page=1", headers),
+            "commits": statistics.get("commit_count"),
+            "contributors": fetch_total(f"{api}/repository/contributors?per_page=1", headers),
+            "branches": fetch_total(f"{api}/repository/branches?per_page=1", headers),
+            "tags": fetch_total(f"{api}/repository/tags?per_page=1", headers),
+            "releases": fetch_total(f"{api}/releases?per_page=1", headers),
+        },
+        "last_pipeline": {"status": pipeline[0].get("status"), "at": pipeline[0].get("updated_at")} if pipeline and pipeline[0] else None,
+    }
 
 
 def collect_gitlab(project: dict) -> dict:
@@ -213,6 +370,7 @@ def collect_gitlab(project: dict) -> dict:
         "open_issues": info.get("open_issues_count"),
         "last_activity": info.get("last_activity_at"),
         "url": f"https://gitlab.com/{project['repo']}",
+        "details": gitlab_details(encoded, info) if info.get("visibility") == "public" else None,
     }
 
 
@@ -311,7 +469,6 @@ def project_card(data: dict) -> str:
             (compact(data.get("clones_total")), "clones (tracked)"),
         ]
         height += 70
-        note += f" Traffic since {month_year(data.get('tracked_since'))}."
     return svg(
         408,
         f"Statistics of {data['name']}",
@@ -329,6 +486,30 @@ def totals(collected: list[dict]) -> dict:
         "release_downloads": sum(p.get("release_downloads") or 0 for p in collected),
         "stars": sum(p.get("stars") or 0 for p in collected),
         "open_issues": sum(p.get("open_issues") or 0 for p in collected),
+    }
+
+
+def detailed_totals(collected: list[dict]) -> dict:
+    """The figures of every project added up, with the languages of the whole page."""
+    sums: dict[str, int] = {}
+    # Bytes of code on GitHub, percentages on GitLab: a page built from one platform keeps the same unit.
+    languages: dict[str, float] = {}
+    any_bytes = False
+    for project in collected:
+        details = project.get("details") or {}
+        for key, value in (details.get("counts") or {}).items():
+            sums[key] = sums.get(key, 0) + (value or 0)
+        for name, entry in (details.get("languages") or {}).items():
+            any_bytes = any_bytes or "bytes" in entry
+            languages[name] = languages.get(name, 0) + (entry.get("bytes") or entry.get("percent") or 0)
+    return {
+        "projects": len(collected),
+        "counts": sums,
+        "languages": share(languages) if any_bytes else {name: {"percent": entry["percent"]} for name, entry in share(languages).items()},
+        "views": sum(p.get("views_total") or 0 for p in collected),
+        "clones": sum(p.get("clones_total") or 0 for p in collected),
+        "downloads_month": sum((p["package"] or {}).get("monthly") or 0 for p in collected),
+        "release_downloads": sum(p.get("release_downloads") or 0 for p in collected),
     }
 
 
@@ -504,7 +685,8 @@ def main() -> None:
             {
                 "updated_at": today,
                 "totals": totals(collected),
-                "projects": {p["slug"]: {k: p.get(k) for k in ("version", "stars", "forks", "open_issues", "last_activity", "package", "visitors_14d", "traffic")} for p in collected},
+                "totals_detailed": detailed_totals(collected),
+                "projects": {p["slug"]: {k: p.get(k) for k in ("version", "stars", "forks", "open_issues", "last_activity", "package", "visitors_14d", "views_total", "clones_total", "traffic_since_at", "release_downloads", "traffic", "details")} for p in collected},
                 "dataset_data": result.get("dataset", previous.get("dataset_data", {})),
                 "history": history,
             },
