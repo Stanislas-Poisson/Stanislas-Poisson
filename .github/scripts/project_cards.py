@@ -8,7 +8,7 @@ dataset French-Postal-Code gets its own two wide cards (usage and content) from 
 Environment:
     PLATFORM         github, gitlab or all (default): the projects to build
     OUT_DIR          directory of the cards and of `stats.json`, which keeps the history (default assets/projects)
-    GH_TOKEN         GitHub token. Reading the traffic of the dataset repository needs push access
+    GH_TOKEN         GitHub token. Reading the traffic of a repository needs the Administration permission on it
     GITLAB_API_TOKEN GitLab token that can read the group (open issues are hidden without one)
     PROJECTS         path of the project list (default .github/projects.json)
     GITLAB_MIN_INTERVAL  seconds between two requests to gitlab.com (default 0.8)
@@ -151,13 +151,30 @@ def registry(spec: str | None) -> dict:
     return {"version": latest.get("version"), "monthly": month.get("downloads"), "total": year.get("downloads"), "total_label": "downloads / year"}
 
 
-def collect_github(project: dict) -> dict:
+def merge_traffic(history: dict, kind: str, payload: dict | None) -> None:
+    """Merges the daily values of a traffic endpoint into the history, one entry per day."""
+    if not payload:
+        return
+    days = history.setdefault(kind, {})
+    for entry in payload.get(kind, []):
+        days[entry["timestamp"][:10]] = {"count": entry["count"], "uniques": entry["uniques"]}
+
+
+def read_traffic(repo: str, history: dict) -> tuple[dict, dict | None]:
+    """Adds the last 14 days of views and clones to the history, returns it with the raw views of the period."""
+    views = github(f"/repos/{repo}/traffic/views")
+    merge_traffic(history, "views", views)
+    merge_traffic(history, "clones", github(f"/repos/{repo}/traffic/clones"))
+    return history, views
+
+
+def collect_github(project: dict, previous: dict) -> dict:
     repo = project["repo"]
     info = github(f"/repos/{repo}") or {}
     release = github(f"/repos/{repo}/releases/latest") or {}
     issues = github(f"/search/issues?q=repo:{repo}+is:issue+is:open") or {}
     releases = github(f"/repos/{repo}/releases?per_page=100") or []
-    return {
+    hosted = {
         "version": release.get("tag_name"),
         "stars": info.get("stargazers_count"),
         "forks": info.get("forks_count"),
@@ -166,6 +183,22 @@ def collect_github(project: dict) -> dict:
         "release_downloads": sum(a["download_count"] for r in releases for a in r.get("assets", [])),
         "url": f"https://github.com/{repo}",
     }
+    # The traffic is read for public repositories only, so a private one can never reach a public card.
+    # Without a token the history of the previous run is kept as it is.
+    history = previous.get("traffic") or {"views": {}, "clones": {}}
+    visitors = previous.get("visitors_14d")
+    if GH_TOKEN and info.get("private") is False:
+        history, views = read_traffic(repo, history)
+        visitors = (views or {}).get("uniques", visitors)
+    if info.get("private") is not True and (history.get("views") or history.get("clones")):
+        hosted |= {
+            "traffic": history,
+            "visitors_14d": visitors,
+            "views_total": sum(d["count"] for d in history.get("views", {}).values()) or None,
+            "clones_total": sum(d["count"] for d in history.get("clones", {}).values()) or None,
+            "tracked_since": min(history.get("views", {}) | history.get("clones", {}), default=None),
+        }
+    return hosted
 
 
 def collect_gitlab(project: dict) -> dict:
@@ -183,8 +216,8 @@ def collect_gitlab(project: dict) -> dict:
     }
 
 
-def collect(project: dict) -> dict:
-    hosted = collect_github(project) if project["platform"] == "github" else collect_gitlab(project)
+def collect(project: dict, previous: dict) -> dict:
+    hosted = collect_github(project, previous) if project["platform"] == "github" else collect_gitlab(project)
     package = registry(project.get("registry"))
     return {**project, **hosted, "package": package, "version": package.get("version") or hosted.get("version")}
 
@@ -227,17 +260,17 @@ def tiles(x: int, items: list[tuple[str, str]]) -> str:
     )
 
 
-def panel(x: int, title: str, icon: str, body: str, note: str) -> str:
+def panel(x: int, title: str, icon: str, body: str, note: str, height: int = 238) -> str:
     return (
-        f'<rect x="{x}" y="0" width="408" height="238" rx="10" class="card"/>'
+        f'<rect x="{x}" y="0" width="408" height="{height}" rx="10" class="card"/>'
         f'{icon}<text x="{x + 56}" y="35" class="title">{escape(title)}</text>{body}'
-        f'<text x="{x + 20}" y="218" class="note">{escape(note)}</text>'
+        f'<text x="{x + 20}" y="{height - 20}" class="note">{escape(note)}</text>'
     )
 
 
-def svg(width: int, label: str, content: str) -> str:
+def svg(width: int, label: str, content: str, height: int = 238) -> str:
     return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 {width + 2} 240" width="{width + 2}" height="240" '
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 {width + 2} {height + 2}" width="{width + 2}" height="{height + 2}" '
         f'role="img" aria-label="{escape(label)}"><style>{STYLE}</style>{content}</svg>\n'
     )
 
@@ -270,7 +303,21 @@ def project_card(data: dict) -> str:
     host = "GitHub" if data["platform"] == "github" else "GitLab"
     names = {"packagist": "Packagist", "npm": "npm"}
     note = host + (f" and {names[data['registry'].split(':')[0]]}" if package else "") + ", public figures."
-    return svg(408, f"Statistics of {data['name']}", panel(0, data["name"], platform_icon(data["platform"]), tiles(0, items), note))
+    height = 238
+    if data.get("views_total") is not None or data.get("clones_total") is not None:
+        items += [
+            (compact(data.get("visitors_14d")), "visitors / 14 days"),
+            (compact(data.get("views_total")), "views (tracked)"),
+            (compact(data.get("clones_total")), "clones (tracked)"),
+        ]
+        height += 70
+        note += f" Traffic since {month_year(data.get('tracked_since'))}."
+    return svg(
+        408,
+        f"Statistics of {data['name']}",
+        panel(0, data["name"], platform_icon(data["platform"]), tiles(0, items), note, height),
+        height,
+    )
 
 
 def totals(collected: list[dict]) -> dict:
@@ -327,20 +374,8 @@ def collect_statistics(repo: str) -> dict | None:
     return None
 
 
-def merge_traffic(history: dict, kind: str, payload: dict | None) -> None:
-    """Merges the daily values of a traffic endpoint into the history, one entry per day."""
-    if not payload:
-        return
-    days = history.setdefault(kind, {})
-    for entry in payload.get(kind, []):
-        days[entry["timestamp"][:10]] = {"count": entry["count"], "uniques": entry["uniques"]}
-
-
 def collect_dataset_github(repo: str, previous: dict) -> tuple[dict, dict]:
-    history = previous.get("traffic", {"views": {}, "clones": {}})
-    views = github(f"/repos/{repo}/traffic/views")
-    merge_traffic(history, "views", views)
-    merge_traffic(history, "clones", github(f"/repos/{repo}/traffic/clones"))
+    history, views = read_traffic(repo, previous.get("traffic", {"views": {}, "clones": {}}))
     releases = github(f"/repos/{repo}/releases?per_page=100") or []
     issues = github(f"/search/issues?q=repo:{repo}+is:issue+is:open") or {}
     commits = github(f"/repos/{repo}/commits?per_page=1") or [{}]
@@ -452,7 +487,7 @@ def main() -> None:
     previous = json.loads(stats_file.read_text()) if stats_file.exists() else {}
 
     wanted = [p for p in config["projects"] if PLATFORM in ("all", p["platform"])]
-    collected = [collect(project) for project in wanted]
+    collected = [collect(project, previous.get("projects", {}).get(project["slug"], {})) for project in wanted]
     for data in collected:
         (OUT_DIR / f"{data['slug']}.svg").write_text(project_card(data), encoding="utf-8")
 
@@ -469,7 +504,7 @@ def main() -> None:
             {
                 "updated_at": today,
                 "totals": totals(collected),
-                "projects": {p["slug"]: {k: p.get(k) for k in ("version", "stars", "forks", "open_issues", "last_activity", "package")} for p in collected},
+                "projects": {p["slug"]: {k: p.get(k) for k in ("version", "stars", "forks", "open_issues", "last_activity", "package", "visitors_14d", "traffic")} for p in collected},
                 "dataset_data": result.get("dataset", previous.get("dataset_data", {})),
                 "history": history,
             },
