@@ -300,7 +300,12 @@ def collect_github(project: dict, previous: dict) -> dict:
         "forks": info.get("forks_count"),
         "open_issues": issues.get("total_count"),
         "last_activity": info.get("pushed_at"),
+        "last_release_at": release.get("published_at"),
         "release_downloads": sum(a["download_count"] for r in releases for a in r.get("assets", [])),
+        # People with a GitHub account other than the owner: the several addresses of the owner count for nothing.
+        "external_contributors": sum(
+            1 for c in (github(f"/repos/{repo}/contributors?per_page=100") or []) if c.get("type") == "User" and c.get("login") != repo.split("/")[0]
+        ),
         "url": f"https://github.com/{repo}",
     }
     # The traffic is read for public repositories only, so a private one can never reach a public card.
@@ -369,6 +374,7 @@ def collect_gitlab(project: dict) -> dict:
         "forks": info.get("forks_count"),
         "open_issues": info.get("open_issues_count"),
         "last_activity": info.get("last_activity_at"),
+        "last_release_at": (releases or [{}])[0].get("released_at"),
         "url": f"https://gitlab.com/{project['repo']}",
         "details": gitlab_details(encoded, info) if info.get("visibility") == "public" else None,
     }
@@ -422,7 +428,7 @@ def panel(x: int, title: str, icon: str, body: str, note: str, height: int = 238
     return (
         f'<rect x="{x}" y="0" width="408" height="{height}" rx="10" class="card"/>'
         f'{icon}<text x="{x + 56}" y="35" class="title">{escape(title)}</text>{body}'
-        f'<text x="{x + 20}" y="{height - 20}" class="note">{escape(note)}</text>'
+        + (f'<text x="{x + 20}" y="{height - 20}" class="note">{escape(note)}</text>' if note else "")
     )
 
 
@@ -438,43 +444,80 @@ def platform_icon(platform: str, x: int = 20) -> str:
     return f'<g transform="translate({x} 16) scale(1.08)"><path class="icon" d="{path}"/></g>'
 
 
-def project_card(data: dict) -> str:
+MAX_TILES = 6
+# Colors of GitHub for the usual languages.
+LANGUAGE_COLORS = {
+    "PHP": "#4f5d95", "JavaScript": "#f1e05a", "TypeScript": "#3178c6", "Vue": "#41b883", "SCSS": "#c6538c",
+    "CSS": "#563d7c", "HTML": "#e34c26", "Shell": "#89e051", "Makefile": "#427819", "Blade": "#f7523f",
+    "Dockerfile": "#384d54", "Python": "#3572a5",
+}
+FALLBACK_LANGUAGE_COLOR = "#8b949e"
+
+
+def project_tiles(data: dict) -> list[tuple[str, str]]:
+    """The figures worth showing, in order of interest: a figure that says nothing (zero, unknown) is left out."""
     package = data["package"]
-    if package:
-        items = [
-            (data.get("version") or "–", "latest version"),
-            (compact(package.get("monthly")), "downloads / month"),
-            (compact(package.get("total")), package.get("total_label", "downloads (total)")),
-        ]
-    else:
-        items = [
-            (data.get("version") or "–", "latest version"),
-            (compact(data.get("release_downloads")), "release downloads"),
-            (compact(data.get("forks")), "forks"),
-        ]
+    details = data.get("details") or {}
+    counts = details.get("counts") or {}
+    monthly = package.get("monthly") or 0
     stars = data.get("stars") if data.get("stars") is not None else package.get("stars")
-    items += [
-        (compact(stars), "stars"),
-        (compact(data.get("open_issues")), "open issues"),
-        (month_year(data.get("last_activity")), "last activity"),
+    created = details.get("created_at")
+    old = created and (datetime.now(timezone.utc) - datetime.fromisoformat(created.replace("Z", "+00:00"))).days > 3 * 365
+    candidates = [
+        (data.get("version"), "latest version"),
+        (month_year(data["last_release_at"]) if data.get("last_release_at") else None, "last release"),
+        (compact(monthly) if monthly > 0 else None, "downloads / month"),
+        (compact(package["total"]) if (package.get("total") or 0) > monthly else None, package.get("total_label", "downloads (total)")),
+        (compact(data["release_downloads"]) if (data.get("release_downloads") or 0) > 0 else None, "release downloads"),
+        (compact(package["details"]["dependents"]) if ((package.get("details") or {}).get("dependents") or 0) > 0 else None, "dependents"),
+        (compact(stars) if (stars or 0) > 0 else None, "stars"),
+        (compact(data["forks"]) if (data.get("forks") or 0) > 0 else None, "forks"),
+        (compact(data["external_contributors"]) if (data.get("external_contributors") or 0) > 0 else None, "contributors"),
+        (compact(data["open_issues"]) if (data.get("open_issues") or 0) > 0 else None, "open issues"),
+        (compact(data["visitors_14d"]) if (data.get("visitors_14d") or 0) >= 10 else None, "visitors / 14 days"),
+        (created[:4] if old else None, "since"),
     ]
-    host = "GitHub" if data["platform"] == "github" else "GitLab"
-    names = {"packagist": "Packagist", "npm": "npm"}
-    note = host + (f" and {names[data['registry'].split(':')[0]]}" if package else "") + ", public figures."
-    height = 238
-    if data.get("views_total") is not None or data.get("clones_total") is not None:
-        items += [
-            (compact(data.get("visitors_14d")), "visitors / 14 days"),
-            (compact(data.get("views_total")), "views (tracked)"),
-            (compact(data.get("clones_total")), "clones (tracked)"),
-        ]
-        height += 70
-    return svg(
-        408,
-        f"Statistics of {data['name']}",
-        panel(0, data["name"], platform_icon(data["platform"]), tiles(0, items), note, height),
-        height,
-    )
+    return [(value, label) for value, label in candidates if value][:MAX_TILES]
+
+
+def languages_bar(x: int, y: int, languages: dict) -> str:
+    """A thin bar of the main languages, with the three first named under it."""
+    top = [(name, entry["percent"]) for name, entry in list(languages.items())[:3]]
+    rest = round(100 - sum(percent for _, percent in top), 1)
+    segments = top + ([("Other", rest)] if rest >= 0.5 else [])
+    width, offset, bar, legend = 368, 0.0, "", ""
+    for name, percent in segments:
+        color = LANGUAGE_COLORS.get(name, FALLBACK_LANGUAGE_COLOR)
+        size = width * percent / 100
+        bar += f'<rect x="{x + offset:.1f}" y="{y}" width="{size:.1f}" height="6" fill="{color}"/>'
+        offset += size
+    cursor = x
+    for name, percent in top:
+        label = f"{name} {round(percent, 1):g}%"
+        legend += (
+            f'<circle cx="{cursor + 4}" cy="{y + 18}" r="4" fill="{LANGUAGE_COLORS.get(name, FALLBACK_LANGUAGE_COLOR)}"/>'
+            f'<text x="{cursor + 14}" y="{y + 22}" class="note">{escape(label)}</text>'
+        )
+        cursor += 34 + len(label) * 6.3
+    return f'<clipPath id="bar"><rect x="{x}" y="{y}" width="{width}" height="6" rx="3"/></clipPath><g clip-path="url(#bar)">{bar}</g>{legend}'
+
+
+def project_card(data: dict) -> str:
+    items = project_tiles(data)
+    rows = max(1, -(-len(items) // 3))
+    languages = (data.get("details") or {}).get("languages")
+    package = data["package"]
+    if languages:
+        height = 104 + 70 * rows
+        body = tiles(0, items) + languages_bar(20, 68 + 70 * rows, languages)
+        note = ""
+    else:
+        height = 98 + 70 * rows
+        body = tiles(0, items)
+        host = "GitHub" if data["platform"] == "github" else "GitLab"
+        names = {"packagist": "Packagist", "npm": "npm"}
+        note = host + (f" and {names[data['registry'].split(':')[0]]}" if package else "") + ", public figures."
+    return svg(408, f"Statistics of {data['name']}", panel(0, data["name"], platform_icon(data["platform"]), body, note, height), height)
 
 
 def totals(collected: list[dict]) -> dict:
@@ -686,7 +729,7 @@ def main() -> None:
                 "updated_at": today,
                 "totals": totals(collected),
                 "totals_detailed": detailed_totals(collected),
-                "projects": {p["slug"]: {k: p.get(k) for k in ("version", "stars", "forks", "open_issues", "last_activity", "package", "visitors_14d", "views_total", "clones_total", "traffic_since_at", "release_downloads", "traffic", "details")} for p in collected},
+                "projects": {p["slug"]: {k: p.get(k) for k in ("version", "stars", "forks", "open_issues", "last_activity", "package", "visitors_14d", "views_total", "clones_total", "traffic_since_at", "release_downloads", "last_release_at", "external_contributors", "traffic", "details")} for p in collected},
                 "dataset_data": result.get("dataset", previous.get("dataset_data", {})),
                 "history": history,
             },
