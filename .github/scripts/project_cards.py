@@ -3,7 +3,7 @@
 
 The projects are listed in `.github/projects.json`. For each one, the script reads the hosting platform (GitHub
 or GitLab, public data) and the package registry (Packagist or npm), then writes `<slug>.svg` in OUT_DIR. The
-dataset French-Postal-Code gets its own two wide cards (usage and content) from data.gouv.fr and its releases.
+dataset French-Postal-Code gets its own three cards (data.gouv.fr, GitHub and content) from data.gouv.fr and its releases.
 
 Environment:
     PLATFORM         github, gitlab or all (default): the projects to build
@@ -573,13 +573,13 @@ def collect_data_gouv(dataset_id: str) -> dict:
     dataset = fetch(f"https://www.data.gouv.fr/api/1/datasets/{dataset_id}/") or {}
     metrics = dataset.get("metrics", {})
     quality = dataset.get("quality", {}).get("score")
-    formats: dict[str, int] = {}
+    views_by_format: dict[str, int] = {}
     for resource in dataset.get("resources", []):
-        match = re.match(r"\[(\w+)", resource.get("title", ""))
-        if match:
-            formats[match.group(1)] = formats.get(match.group(1), 0) + (resource.get("metrics", {}).get("views") or 0)
+        name = resource.get("format")
+        if name:
+            views_by_format[name] = views_by_format.get(name, 0) + (resource.get("metrics", {}).get("views") or 0)
     return {
-        "formats": formats,
+        "views_by_format": views_by_format,
         "downloads": metrics.get("resources_downloads"),
         "views": metrics.get("views"),
         "reuses": metrics.get("reuses"),
@@ -599,23 +599,38 @@ def collect_statistics(repo: str) -> dict | None:
 
 
 def collect_dataset_github(repo: str, previous: dict) -> tuple[dict, dict]:
-    history, views = read_traffic(repo, previous.get("traffic", {"views": {}, "clones": {}}))
+    history, views = read_traffic(repo, previous.get("traffic") or {"views": {}, "clones": {}})
+    info = github(f"/repos/{repo}") or {}
     releases = github(f"/repos/{repo}/releases?per_page=100") or []
     issues = github(f"/search/issues?q=repo:{repo}+is:issue+is:open") or {}
     commits = github(f"/repos/{repo}/commits?per_page=1") or [{}]
     stats = {
         "release_downloads": sum(a["download_count"] for r in releases for a in r.get("assets", [])),
+        "stars": info.get("stargazers_count"),
+        "forks": info.get("forks_count"),
         "visitors_14d": (views or {}).get("uniques", previous.get("github", {}).get("visitors_14d")),
         "views_total": sum(d["count"] for d in history.get("views", {}).values()) or None,
         "clones_total": sum(d["count"] for d in history.get("clones", {}).values()) or None,
-        "tracked_since": min(history.get("views", {}) | history.get("clones", {}), default=None),
+        "traffic_since_at": since_at(history),
         "open_issues": issues.get("total_count"),
         "last_commit": commits[0].get("commit", {}).get("committer", {}).get("date"),
+        "details": github_details(repo, info, releases, history) if info.get("private") is False else None,
     }
     return stats, history
 
 
-def usage_card(data_gouv: dict, hub: dict, logo: bytes | None) -> str:
+def worth_showing(candidates: list[tuple[str | None, str]]) -> list[tuple[str, str]]:
+    """Keeps the figures that say something, at most MAX_TILES."""
+    return [(value, label) for value, label in candidates if value][:MAX_TILES]
+
+
+def single_card(title: str, label: str, icon: str, items: list[tuple[str, str]], note: str = "") -> str:
+    rows = max(1, -(-len(items) // 3))
+    height = (98 if note else 70) + 70 * rows
+    return svg(408, label, panel(0, title, icon, tiles(0, items), note, height), height)
+
+
+def data_gouv_card(data_gouv: dict, logo: bytes | None) -> str:
     logo_icon = (
         '<rect x="19.5" y="15.5" width="27" height="27" rx="6.5" class="frame"/>'
         '<clipPath id="logo"><rect x="20" y="16" width="26" height="26" rx="6"/></clipPath>'
@@ -623,44 +638,36 @@ def usage_card(data_gouv: dict, hub: dict, logo: bytes | None) -> str:
         if logo
         else ""
     )
-    left = panel(
-        0,
-        "data.gouv.fr",
-        logo_icon,
-        tiles(0, [
-            (compact(data_gouv["downloads"]), "downloads"),
-            (compact(data_gouv["views"]), "views"),
-            (compact(data_gouv["reuses"]), "reuses"),
-            (compact(data_gouv["discussions"]), "open discussions"),
-            ("–" if data_gouv["quality"] is None else f'{data_gouv["quality"]}%', "metadata quality"),
-            (month_year(data_gouv["last_update"]), "last update"),
-        ]),
-        "Public figures of the dataset page.",
-    )
-    since = month_year(hub["tracked_since"]) if hub["tracked_since"] else None
-    right = panel(
-        428,
-        "GitHub",
-        platform_icon("github", 448),
-        tiles(428, [
-            (compact(hub["release_downloads"]), "release downloads"),
-            (compact(hub["views_total"]), "repository views"),
-            (compact(hub["clones_total"]), "git clones"),
-            (compact(hub["open_issues"]), "open issues"),
-            (compact(hub["visitors_14d"]), "visitors (14 days)"),
-            (month_year(hub["last_commit"]), "last commit"),
-        ]),
-        f"Views and clones counted since {since}." if since else "Views and clones need a token with push access.",
-    )
-    return svg(836, "Usage statistics", left + right)
+    quality = data_gouv["quality"]
+    items = worth_showing([
+        (compact(data_gouv["downloads"]) if (data_gouv["downloads"] or 0) > 0 else None, "downloads"),
+        (compact(data_gouv["views"]) if (data_gouv["views"] or 0) > 0 else None, "views"),
+        (compact(data_gouv["reuses"]) if (data_gouv["reuses"] or 0) > 0 else None, "reuses"),
+        (compact(data_gouv["discussions"]) if (data_gouv["discussions"] or 0) > 0 else None, "open discussions"),
+        (None if quality is None else f"{quality}%", "metadata quality"),
+        (month_year(data_gouv["last_update"]) if data_gouv["last_update"] else None, "last update"),
+    ])
+    return single_card("data.gouv.fr", "Statistics of the dataset on data.gouv.fr", logo_icon, items)
 
 
-def content_card(dataset: dict | None, formats: dict[str, int]) -> str:
+def github_card(hub: dict) -> str:
+    items = worth_showing([
+        (compact(hub["release_downloads"]) if (hub["release_downloads"] or 0) > 0 else None, "release downloads"),
+        (compact(hub["stars"]) if (hub.get("stars") or 0) > 0 else None, "stars"),
+        (compact(hub["forks"]) if (hub.get("forks") or 0) > 0 else None, "forks"),
+        (compact(hub["visitors_14d"]) if (hub["visitors_14d"] or 0) >= 10 else None, "visitors (14 days)"),
+        (compact(hub["views_total"]) if (hub["views_total"] or 0) > 0 else None, "repository views"),
+        (compact(hub["open_issues"]) if (hub["open_issues"] or 0) > 0 else None, "open issues"),
+        (month_year(hub["last_commit"]) if hub["last_commit"] else None, "last commit"),
+    ])
+    return single_card("GitHub", "Statistics of the dataset repository on GitHub", platform_icon("github"), items)
+
+
+def content_card(dataset: dict | None) -> str:
     box_icon = (
         '<g transform="translate(20 15) scale(1.1)"><path class="icon" '
         'd="M12 1 3 5.5v9L12 19l9-4.5v-9zm0 2.2 5.9 2.9L12 9 6.1 6.1zM5 7.7l6 3v6.5l-6-3zm14 0v6.5l-6 3v-6.5z"/></g>'
     )
-    bars_icon = '<g transform="translate(448 15) scale(1.1)"><path class="icon" d="M4 20V10h4v10zm6 0V4h4v16zm6 0v-7h4v7z"/></g>'
     labels = ("regions", "departments", "communes", "postal entries", "code successions", "BAN points")
     if dataset:
         by_source = dataset.get("cities_by_source", {})
@@ -677,20 +684,7 @@ def content_card(dataset: dict | None, formats: dict[str, int]) -> str:
     else:
         items = [("–", label) for label in labels]
         note = "Figures appear with the next release."
-
-    peak = max(formats.values(), default=0) or 1
-    rows = []
-    for index, (name, count) in enumerate(sorted(formats.items(), key=lambda item: -item[1])[:4]):
-        y = 66 + index * 36
-        width = max(4, round(250 * count / peak))
-        rows.append(
-            f'<text x="448" y="{y + 14}" class="label">{escape(name)}</text>'
-            f'<rect x="500" y="{y}" width="{width}" height="18" rx="4" class="bar"/>'
-            f'<text x="{506 + width}" y="{y + 14}" class="label">{compact(count)}</text>'
-        )
-    left = panel(0, "Dataset", box_icon, tiles(0, items), note)
-    right = panel(428, "Downloads by format", bars_icon, "".join(rows), "All archives of a format together, from data.gouv.fr.")
-    return svg(836, "Dataset content and downloads by format", left + right)
+    return single_card("Dataset", "Content of the dataset", box_icon, items, note)
 
 
 def write_dataset(config: dict, previous: dict) -> dict:
@@ -699,8 +693,11 @@ def write_dataset(config: dict, previous: dict) -> dict:
     logo = fetch(DATA_GOUV_LOGO_URL, binary=True)
     dataset = collect_statistics(config["repo"])
     slug = config["slug"]
-    (OUT_DIR / f"{slug}-usage.svg").write_text(usage_card(data_gouv, hub, logo), encoding="utf-8")
-    (OUT_DIR / f"{slug}-dataset.svg").write_text(content_card(dataset, data_gouv["formats"]), encoding="utf-8")
+    (OUT_DIR / f"{slug}-datagouv.svg").write_text(data_gouv_card(data_gouv, logo), encoding="utf-8")
+    (OUT_DIR / f"{slug}-github.svg").write_text(github_card(hub), encoding="utf-8")
+    (OUT_DIR / f"{slug}-dataset.svg").write_text(content_card(dataset), encoding="utf-8")
+    # The two wide cards of the former layout.
+    (OUT_DIR / f"{slug}-usage.svg").unlink(missing_ok=True)
     return {"data_gouv": data_gouv, "github": hub, "dataset": dataset, "traffic": traffic}
 
 
