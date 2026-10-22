@@ -2,12 +2,12 @@
   "dataset_data": {
     "data_gouv": {
       "discussions": 0,
-      "downloads": 11611,
+      "downloads": 11650,
       "formats": {},
       "last_update": "2026-10-09T13:49:36.277000+00:00",
       "quality": 100,
       "reuses": 3,
-      "views": 50840
+      "views": 51021
     },
     "dataset": {
       "built_at": "2026-10-09T13:40:00Z",
@@ -26,13 +26,13 @@
       "successions": 8480
     },
     "github": {
-      "clones_total": 778,
+      "clones_total": 1475,
       "last_commit": "2026-10-10T20:31:40Z",
       "open_issues": 0,
-      "release_downloads": 1535,
+      "release_downloads": 1582,
       "tracked_since": "2026-09-18",
-      "views_total": 69,
-      "visitors_14d": 19
+      "views_total": 199,
+      "visitors_14d": 27
     },
     "traffic": {
       "clones": {
@@ -107,6 +107,62 @@
         "2026-10-05": {
           "count": 4,
           "uniques": 4
+        },
+        "2026-10-08": {
+          "count": 188,
+          "uniques": 63
+        },
+        "2026-10-09": {
+          "count": 203,
+          "uniques": 81
+        },
+        "2026-10-10": {
+          "count": 82,
+          "uniques": 46
+        },
+        "2026-10-11": {
+          "count": 28,
+          "uniques": 16
+        },
+        "2026-10-12": {
+          "count": 5,
+          "uniques": 4
+        },
+        "2026-10-13": {
+          "count": 7,
+          "uniques": 7
+        },
+        "2026-10-14": {
+          "count": 134,
+          "uniques": 8
+        },
+        "2026-10-15": {
+          "count": 4,
+          "uniques": 4
+        },
+        "2026-10-16": {
+          "count": 10,
+          "uniques": 7
+        },
+        "2026-10-17": {
+          "count": 4,
+          "uniques": 4
+        },
+        "2026-10-18": {
+          "count": 10,
+          "uniques": 7
+        },
+        "2026-10-19": {
+          "count": 8,
+          "uniques": 7
+        },
+        "2026-10-20": {
+          "count": 7,
+          "uniques": 6
+        },
+        "2026-10-21": {
+          "count": 7,
+          "uniques": 6
         }
       },
       "views": {
@@ -181,6 +237,62 @@
         "2026-10-05": {
           "count": 2,
           "uniques": 2
+        },
+        "2026-10-08": {
+          "count": 9,
+          "uniques": 3
+        },
+        "2026-10-09": {
+          "count": 6,
+          "uniques": 4
+        },
+        "2026-10-10": {
+          "count": 2,
+          "uniques": 2
+        },
+        "2026-10-11": {
+          "count": 4,
+          "uniques": 3
+        },
+        "2026-10-12": {
+          "count": 17,
+          "uniques": 6
+        },
+        "2026-10-13": {
+          "count": 63,
+          "uniques": 4
+        },
+        "2026-10-14": {
+          "count": 3,
+          "uniques": 1
+        },
+        "2026-10-15": {
+          "count": 5,
+          "uniques": 1
+        },
+        "2026-10-16": {
+          "count": 6,
+          "uniques": 5
+        },
+        "2026-10-17": {
+          "count": 4,
+          "uniques": 3
+        },
+        "2026-10-18": {
+          "count": 2,
+          "uniques": 2
+        },
+        "2026-10-19": {
+          "count": 5,
+          "uniques": 4
+        },
+        "2026-10-20": {
+          "count": 2,
+          "uniques": 1
+        },
+        "2026-10-21": {
+          "count": 2,
+          "uniques": 2
         }
       }
     }
@@ -207,6 +319,15 @@
     "2026-10-19": {
       "downloads_month": 2175,
       "downloads_total": 2175,
+      "open_issues": 0,
+      "packages": 4,
+      "projects": 5,
+      "release_downloads": 5,
+      "stars": 0
+    },
+    "2026-10-22": {
+      "downloads_month": 2185,
+      "downloads_total": 2185,
       "open_issues": 0,
       "packages": 4,
       "projects": 5,
@@ -254,9 +375,9 @@
       "last_activity": "2026-10-11T10:49:04Z",
       "open_issues": 0,
       "package": {
-        "monthly": 2163,
+        "monthly": 2173,
         "stars": 0,
-        "total": 2163,
+        "total": 2173,
         "version": "1.1.1"
       },
       "stars": 0,
@@ -277,13 +398,13 @@
     }
   },
   "totals": {
-    "downloads_month": 2175,
-    "downloads_total": 2175,
+    "downloads_month": 2185,
+    "downloads_total": 2185,
     "open_issues": 0,
     "packages": 4,
     "projects": 5,
     "release_downloads": 5,
     "stars": 0
   },
-  "updated_at": "2026-10-19"
+  "updated_at": "2026-10-22"
 }
