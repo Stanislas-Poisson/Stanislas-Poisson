@@ -3,11 +3,16 @@
     "data_gouv": {
       "discussions": 0,
       "downloads": 11650,
-      "formats": {},
       "last_update": "2026-10-09T13:49:36.277000+00:00",
       "quality": 100,
       "reuses": 3,
-      "views": 51021
+      "views": 51021,
+      "views_by_format": {
+        "csv": 113,
+        "json": 11,
+        "txt": 11,
+        "zip": 64
+      }
     },
     "dataset": {
       "built_at": "2026-10-09T13:40:00Z",
@@ -27,10 +32,368 @@
     },
     "github": {
       "clones_total": 1475,
+      "details": {
+        "community_health_percent": 100,
+        "counts": {
+          "branches": 7,
+          "commits": 163,
+          "contributors": 2,
+          "forks": 19,
+          "open_issues_and_prs": 4,
+          "open_pull_requests": 3,
+          "pull_requests": 90,
+          "releases": 11,
+          "stars": 87,
+          "tags": 11,
+          "watchers": 5
+        },
+        "created_at": "2017-12-02T14:11:59Z",
+        "default_branch": "main",
+        "description": "Dataset of the regions, departments, communes and postal codes of France, with one GPS point per postal code and the history of changes. Built from INSEE, La Poste, BAN and geo.api.gouv.fr.",
+        "homepage": "https://www.data.gouv.fr/datasets/regions-departements-villes-et-villages-de-france-et-doutre-mer",
+        "id": "github:Stanislas-Poisson/French-Postal-Code",
+        "is_archived": false,
+        "is_fork": false,
+        "language": "PHP",
+        "languages": {
+          "Makefile": {
+            "bytes": 5295,
+            "percent": 1.6
+          },
+          "PHP": {
+            "bytes": 327320,
+            "percent": 96.3
+          },
+          "Shell": {
+            "bytes": 7279,
+            "percent": 2.1
+          }
+        },
+        "license": "MIT",
+        "pushed_at": "2026-10-22T21:04:59Z",
+        "releases": [
+          {
+            "assets": [
+              {
+                "downloads": 50,
+                "name": "french-postal-code-4.1.2-csv.zip",
+                "size": 2145385
+              },
+              {
+                "downloads": 22,
+                "name": "french-postal-code-4.1.2-json.zip",
+                "size": 2562569
+              },
+              {
+                "downloads": 4,
+                "name": "french-postal-code-4.1.2-package.zip",
+                "size": 1882971
+              },
+              {
+                "downloads": 25,
+                "name": "french-postal-code-4.1.2-sql.zip",
+                "size": 1964355
+              },
+              {
+                "downloads": 23,
+                "name": "SHA256SUMS",
+                "size": 483
+              },
+              {
+                "downloads": 41,
+                "name": "statistics.json",
+                "size": 360
+              }
+            ],
+            "downloads": 165,
+            "prerelease": false,
+            "published_at": "2026-10-09T13:49:21Z",
+            "tag": "4.1.2"
+          },
+          {
+            "assets": [
+              {
+                "downloads": 11,
+                "name": "french-postal-code-4.1.1-csv.zip",
+                "size": 2145449
+              },
+              {
+                "downloads": 13,
+                "name": "french-postal-code-4.1.1-json.zip",
+                "size": 2562514
+              },
+              {
+                "downloads": 3,
+                "name": "french-postal-code-4.1.1-package.zip",
+                "size": 1882913
+              },
+              {
+                "downloads": 8,
+                "name": "french-postal-code-4.1.1-sql.zip",
+                "size": 1964322
+              },
+              {
+                "downloads": 8,
+                "name": "SHA256SUMS",
+                "size": 483
+              },
+              {
+                "downloads": 10,
+                "name": "statistics.json",
+                "size": 320
+              }
+            ],
+            "downloads": 53,
+            "prerelease": false,
+            "published_at": "2026-10-08T15:29:02Z",
+            "tag": "4.1.1"
+          },
+          {
+            "assets": [
+              {
+                "downloads": 36,
+                "name": "french-postal-code-4.0.0-csv.zip",
+                "size": 2145345
+              },
+              {
+                "downloads": 18,
+                "name": "french-postal-code-4.0.0-json.zip",
+                "size": 2562544
+              },
+              {
+                "downloads": 6,
+                "name": "french-postal-code-4.0.0-package.zip",
+                "size": 1882785
+              },
+              {
+                "downloads": 24,
+                "name": "french-postal-code-4.0.0-sql.zip",
+                "size": 1963563
+              },
+              {
+                "downloads": 24,
+                "name": "SHA256SUMS",
+                "size": 483
+              },
+              {
+                "downloads": 28,
+                "name": "statistics.json",
+                "size": 320
+              }
+            ],
+            "downloads": 136,
+            "prerelease": false,
+            "published_at": "2026-10-02T15:09:46Z",
+            "tag": "4.0.0"
+          },
+          {
+            "assets": [
+              {
+                "downloads": 95,
+                "name": "French-zip-code-3.0.0-CSV.tar.gz",
+                "size": 1179192
+              },
+              {
+                "downloads": 309,
+                "name": "French-zip-code-3.0.0-CSV.zip",
+                "size": 1178997
+              },
+              {
+                "downloads": 139,
+                "name": "French-zip-code-3.0.0-JSON.tar.gz",
+                "size": 1397310
+              },
+              {
+                "downloads": 225,
+                "name": "French-zip-code-3.0.0-JSON.zip",
+                "size": 1396803
+              },
+              {
+                "downloads": 137,
+                "name": "French-zip-code-3.0.0-SQL.tar.gz",
+                "size": 1252861
+              },
+              {
+                "downloads": 243,
+                "name": "French-zip-code-3.0.0-SQL.zip",
+                "size": 1253284
+              }
+            ],
+            "downloads": 1148,
+            "prerelease": false,
+            "published_at": "2018-07-05T12:17:30Z",
+            "tag": "3.0.0"
+          },
+          {
+            "assets": [
+              {
+                "downloads": 27,
+                "name": "French-zip-code-2.0.0.tar.gz",
+                "size": 3794433
+              },
+              {
+                "downloads": 63,
+                "name": "French-zip-code-2.0.0.zip",
+                "size": 3795094
+              }
+            ],
+            "downloads": 90,
+            "prerelease": false,
+            "published_at": "2018-06-19T09:27:46Z",
+            "tag": "2.0.0"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2018-05-29T06:44:22Z",
+            "tag": "1.3.1"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2018-04-21T08:30:12Z",
+            "tag": "1.3.0"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2018-03-14T08:03:11Z",
+            "tag": "1.2.0"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2018-01-06T07:29:37Z",
+            "tag": "1.1.0"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2017-12-08T18:35:33Z",
+            "tag": "1.0.1"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2017-12-04T15:10:38Z",
+            "tag": "1.0"
+          }
+        ],
+        "size_kb": 10914,
+        "topics": [
+          "communes",
+          "csv",
+          "dataset",
+          "departments",
+          "france",
+          "geocoding",
+          "gps",
+          "insee",
+          "json",
+          "laravel",
+          "open-data",
+          "php",
+          "postal-codes",
+          "regions",
+          "sql"
+        ],
+        "traffic": {
+          "paths": [
+            {
+              "count": 14,
+              "path": "/Stanislas-Poisson/French-Postal-Code",
+              "title": "Overview",
+              "uniques": 11
+            },
+            {
+              "count": 6,
+              "path": "/Stanislas-Poisson/French-Postal-Code/pulls",
+              "title": "/pulls",
+              "uniques": 4
+            },
+            {
+              "count": 5,
+              "path": "/Stanislas-Poisson/French-Postal-Code/blob/main/README.md",
+              "title": "/blob/main/README.md",
+              "uniques": 5
+            },
+            {
+              "count": 3,
+              "path": "/Stanislas-Poisson/French-Postal-Code/blob/main/CHANGELOG.md",
+              "title": "/blob/main/CHANGELOG.md",
+              "uniques": 3
+            },
+            {
+              "count": 3,
+              "path": "/Stanislas-Poisson/French-Postal-Code/blob/main/Exports/csv/cities.csv",
+              "title": "/blob/main/Exports/csv/cities.csv",
+              "uniques": 3
+            },
+            {
+              "count": 3,
+              "path": "/Stanislas-Poisson/French-Postal-Code/tree/main/app",
+              "title": "/tree/main/app",
+              "uniques": 3
+            },
+            {
+              "count": 3,
+              "path": "/Stanislas-Poisson/French-postal-code/releases",
+              "title": "/releases",
+              "uniques": 3
+            },
+            {
+              "count": 2,
+              "path": "/Stanislas-Poisson/French-Postal-Code/blob/main/.env.example",
+              "title": "/blob/main/.env.example",
+              "uniques": 2
+            },
+            {
+              "count": 2,
+              "path": "/Stanislas-Poisson/French-Postal-Code/blob/main/Makefile",
+              "title": "/blob/main/Makefile",
+              "uniques": 2
+            },
+            {
+              "count": 2,
+              "path": "/Stanislas-Poisson/French-Postal-Code/blob/main/composer.lock",
+              "title": "/blob/main/composer.lock",
+              "uniques": 2
+            }
+          ],
+          "referrers": [
+            {
+              "count": 3,
+              "referrer": "Google",
+              "uniques": 3
+            },
+            {
+              "count": 2,
+              "referrer": "data.gouv.fr",
+              "uniques": 2
+            },
+            {
+              "count": 1,
+              "referrer": "projects.zoho.eu",
+              "uniques": 1
+            }
+          ],
+          "since_at": "2026-09-18T00:00:00Z"
+        },
+        "updated_at": "2026-10-10T20:31:44Z",
+        "visibility": "public"
+      },
+      "forks": 19,
       "last_commit": "2026-10-10T20:31:40Z",
-      "open_issues": 0,
-      "release_downloads": 1582,
-      "tracked_since": "2026-09-18",
+      "open_issues": 1,
+      "release_downloads": 1592,
+      "stars": 87,
+      "traffic_since_at": "2026-09-18T00:00:00Z",
       "views_total": 199,
       "visitors_14d": 27
     },
@@ -326,85 +689,2418 @@
       "stars": 0
     },
     "2026-10-22": {
-      "downloads_month": 2185,
+      "downloads_month": 2446,
       "downloads_total": 2185,
-      "open_issues": 0,
-      "packages": 4,
-      "projects": 5,
-      "release_downloads": 5,
+      "open_issues": 36,
+      "packages": 5,
+      "projects": 8,
+      "release_downloads": 7,
       "stars": 0
     }
   },
   "projects": {
     "devtools-resize-fix": {
+      "clones_total": 284,
+      "details": {
+        "community_health_percent": 100,
+        "counts": {
+          "branches": 2,
+          "commits": 60,
+          "contributors": 3,
+          "forks": 1,
+          "open_issues_and_prs": 0,
+          "open_pull_requests": 0,
+          "pull_requests": 21,
+          "releases": 4,
+          "stars": 0,
+          "tags": 4,
+          "watchers": 0
+        },
+        "created_at": "2026-07-08T08:26:27Z",
+        "default_branch": "main",
+        "description": "Chrome extension that fixes a Chromium bug where the page layout doesn't reflow correctly to fit the viewport after a reload while DevTools is docked. No manual resize needed anymore.",
+        "homepage": "https://chromewebstore.google.com/detail/devtools-resize-fix/dcpnklkeicghdphjbcbaccemjofdagli",
+        "id": "github:Stanislas-Poisson/devtools-resize-fix",
+        "is_archived": false,
+        "is_fork": false,
+        "language": "HTML",
+        "languages": {
+          "HTML": {
+            "bytes": 21432,
+            "percent": 40.6
+          },
+          "JavaScript": {
+            "bytes": 20240,
+            "percent": 38.3
+          },
+          "Python": {
+            "bytes": 10470,
+            "percent": 19.8
+          },
+          "Shell": {
+            "bytes": 655,
+            "percent": 1.2
+          }
+        },
+        "license": "MIT",
+        "pushed_at": "2026-10-14T18:45:32Z",
+        "releases": [
+          {
+            "assets": [
+              {
+                "downloads": 0,
+                "name": "devtools-resize-fix-1.1.1.zip",
+                "size": 18444
+              },
+              {
+                "downloads": 0,
+                "name": "devtools-resize-fix-1.1.1.zip.sha256",
+                "size": 101
+              }
+            ],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-12T14:20:06Z",
+            "tag": "1.1.1"
+          },
+          {
+            "assets": [
+              {
+                "downloads": 2,
+                "name": "devtools-resize-fix-v1.1.0.zip",
+                "size": 18446
+              }
+            ],
+            "downloads": 2,
+            "prerelease": false,
+            "published_at": "2026-07-09T10:03:13Z",
+            "tag": "v1.1.0"
+          },
+          {
+            "assets": [
+              {
+                "downloads": 2,
+                "name": "devtools-resize-fix-v1.0.1.zip",
+                "size": 9023
+              }
+            ],
+            "downloads": 2,
+            "prerelease": false,
+            "published_at": "2026-07-08T08:46:24Z",
+            "tag": "v1.0.1"
+          },
+          {
+            "assets": [
+              {
+                "downloads": 1,
+                "name": "devtools-resize-fix-v1.0.0.zip",
+                "size": 9047
+              }
+            ],
+            "downloads": 1,
+            "prerelease": false,
+            "published_at": "2026-07-08T08:33:14Z",
+            "tag": "v1.0.0"
+          }
+        ],
+        "size_kb": 692,
+        "topics": [
+          "browser-tool",
+          "bugfix",
+          "chrome-extensions",
+          "chromium-extension",
+          "developer-tool",
+          "devtools-extension",
+          "javascript",
+          "manifest-v3"
+        ],
+        "traffic": {
+          "paths": [
+            {
+              "count": 7,
+              "path": "/Stanislas-Poisson/devtools-resize-fix",
+              "title": "Overview",
+              "uniques": 4
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/devtools-resize-fix/issues",
+              "title": "/issues",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/devtools-resize-fix/issues/3",
+              "title": "/issues/3",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/devtools-resize-fix/issues/4",
+              "title": "/issues/4",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/devtools-resize-fix/issues/5",
+              "title": "/issues/5",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/devtools-resize-fix/issues/6",
+              "title": "/issues/6",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/devtools-resize-fix/pull/10",
+              "title": "/pull/10",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/devtools-resize-fix/pull/17",
+              "title": "/pull/17",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/devtools-resize-fix/pull/7",
+              "title": "/pull/7",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/devtools-resize-fix/pull/9",
+              "title": "/pull/9",
+              "uniques": 1
+            }
+          ],
+          "referrers": [
+            {
+              "count": 4,
+              "referrer": "github.com",
+              "uniques": 1
+            }
+          ],
+          "since_at": "2026-10-08T00:00:00Z"
+        },
+        "updated_at": "2026-10-12T14:19:18Z",
+        "visibility": "public"
+      },
+      "external_contributors": 1,
       "forks": 1,
       "last_activity": "2026-10-14T18:45:32Z",
+      "last_release_at": "2026-10-12T14:20:06Z",
       "open_issues": 0,
       "package": {},
+      "release_downloads": 5,
       "stars": 0,
-      "version": "1.1.1"
+      "traffic": {
+        "clones": {
+          "2026-10-08": {
+            "count": 48,
+            "uniques": 15
+          },
+          "2026-10-09": {
+            "count": 7,
+            "uniques": 4
+          },
+          "2026-10-10": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-11": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-12": {
+            "count": 159,
+            "uniques": 40
+          },
+          "2026-10-13": {
+            "count": 26,
+            "uniques": 11
+          },
+          "2026-10-14": {
+            "count": 22,
+            "uniques": 8
+          },
+          "2026-10-15": {
+            "count": 4,
+            "uniques": 4
+          },
+          "2026-10-16": {
+            "count": 6,
+            "uniques": 4
+          },
+          "2026-10-17": {
+            "count": 4,
+            "uniques": 4
+          },
+          "2026-10-18": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-19": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-20": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-21": {
+            "count": 1,
+            "uniques": 1
+          }
+        },
+        "views": {
+          "2026-10-08": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-09": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-10": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-11": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-12": {
+            "count": 11,
+            "uniques": 2
+          },
+          "2026-10-13": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-14": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-15": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-16": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-17": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-18": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-19": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-20": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-21": {
+            "count": 0,
+            "uniques": 0
+          }
+        }
+      },
+      "traffic_since_at": "2026-10-08T00:00:00Z",
+      "version": "1.1.1",
+      "views_total": 17,
+      "visitors_14d": 4
     },
     "french-postal-code-package": {
+      "clones_total": 1325,
+      "details": {
+        "community_health_percent": 100,
+        "counts": {
+          "branches": 2,
+          "commits": 93,
+          "contributors": 2,
+          "forks": 0,
+          "open_issues_and_prs": 0,
+          "open_pull_requests": 0,
+          "pull_requests": 43,
+          "releases": 7,
+          "stars": 0,
+          "tags": 7,
+          "watchers": 0
+        },
+        "created_at": "2026-10-02T19:18:04Z",
+        "default_branch": "main",
+        "description": "The regions, departments, communes and postal codes of France, with one GPS point per postal code: data, models and a loader for Laravel and Symfony.",
+        "homepage": "https://stanislas-poisson.github.io/French-Postal-Code-Package/",
+        "id": "github:Stanislas-Poisson/French-Postal-Code-Package",
+        "is_archived": false,
+        "is_fork": false,
+        "language": "PHP",
+        "languages": {
+          "Makefile": {
+            "bytes": 643,
+            "percent": 0.4
+          },
+          "PHP": {
+            "bytes": 138771,
+            "percent": 94.2
+          },
+          "Shell": {
+            "bytes": 7858,
+            "percent": 5.3
+          }
+        },
+        "license": "MIT",
+        "pushed_at": "2026-10-10T20:38:38Z",
+        "releases": [
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-09T18:22:31Z",
+            "tag": "5.0.0"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-09T13:56:59Z",
+            "tag": "4.3.1"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-09T13:28:49Z",
+            "tag": "4.3.0"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-08T16:19:19Z",
+            "tag": "4.2.0"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-08T08:39:00Z",
+            "tag": "4.1.1"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-03T22:37:13Z",
+            "tag": "4.1.0"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-02T22:18:19Z",
+            "tag": "4.0.0"
+          }
+        ],
+        "size_kb": 3060,
+        "topics": [
+          "communes",
+          "composer",
+          "dataset",
+          "doctrine",
+          "eloquent",
+          "france",
+          "gps",
+          "insee",
+          "laravel",
+          "open-data",
+          "packagist",
+          "php",
+          "postal-codes",
+          "symfony"
+        ],
+        "traffic": {
+          "paths": [
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/French-Postal-Code-Package",
+              "title": "Overview",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/French-Postal-Code-Package/issues/10",
+              "title": "/issues/10",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/French-Postal-Code-Package/issues/20",
+              "title": "/issues/20",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/French-Postal-Code-Package/issues/22",
+              "title": "/issues/22",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/French-Postal-Code-Package/issues/26",
+              "title": "/issues/26",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/French-Postal-Code-Package/issues/52",
+              "title": "/issues/52",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/French-Postal-Code-Package/pull/21",
+              "title": "/pull/21",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/French-Postal-Code-Package/pull/24",
+              "title": "/pull/24",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/French-Postal-Code-Package/pull/27",
+              "title": "/pull/27",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/French-Postal-Code-Package/pull/33",
+              "title": "/pull/33",
+              "uniques": 1
+            }
+          ],
+          "referrers": [],
+          "since_at": "2026-10-08T00:00:00Z"
+        },
+        "updated_at": "2026-10-10T20:38:42Z",
+        "visibility": "public"
+      },
+      "external_contributors": 0,
       "forks": 0,
       "last_activity": "2026-10-10T20:38:38Z",
+      "last_release_at": "2026-10-09T18:22:31Z",
       "open_issues": 0,
       "package": {
+        "details": {
+          "dependents": 0,
+          "downloads": {
+            "daily": 0,
+            "monthly": 8,
+            "total": 8
+          },
+          "favers": 0,
+          "language": "PHP",
+          "latest_release_at": "2026-10-09T18:20:27+00:00",
+          "name": "stanislas-poisson/french-postal-code",
+          "suggesters": 0,
+          "versions": 9
+        },
         "monthly": 8,
         "stars": 0,
         "total": 8,
         "version": "5.0.0"
       },
+      "release_downloads": 0,
       "stars": 0,
-      "version": "5.0.0"
+      "traffic": {
+        "clones": {
+          "2026-10-08": {
+            "count": 314,
+            "uniques": 16
+          },
+          "2026-10-09": {
+            "count": 662,
+            "uniques": 71
+          },
+          "2026-10-10": {
+            "count": 263,
+            "uniques": 31
+          },
+          "2026-10-11": {
+            "count": 60,
+            "uniques": 29
+          },
+          "2026-10-12": {
+            "count": 3,
+            "uniques": 3
+          },
+          "2026-10-13": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-14": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-15": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-16": {
+            "count": 4,
+            "uniques": 2
+          },
+          "2026-10-17": {
+            "count": 3,
+            "uniques": 3
+          },
+          "2026-10-18": {
+            "count": 5,
+            "uniques": 5
+          },
+          "2026-10-19": {
+            "count": 3,
+            "uniques": 3
+          },
+          "2026-10-20": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-21": {
+            "count": 1,
+            "uniques": 1
+          }
+        },
+        "views": {
+          "2026-10-08": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-09": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-10": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-11": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-12": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-13": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-14": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-15": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-16": {
+            "count": 3,
+            "uniques": 1
+          },
+          "2026-10-17": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-18": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-19": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-20": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-21": {
+            "count": 0,
+            "uniques": 0
+          }
+        }
+      },
+      "traffic_since_at": "2026-10-08T00:00:00Z",
+      "version": "5.0.0",
+      "views_total": 16,
+      "visitors_14d": 2
+    },
+    "job-application-tracker": {
+      "clones_total": 3493,
+      "details": {
+        "community_health_percent": 100,
+        "counts": {
+          "branches": 2,
+          "commits": 135,
+          "contributors": 2,
+          "forks": 0,
+          "open_issues_and_prs": 34,
+          "open_pull_requests": 0,
+          "pull_requests": 99,
+          "releases": 0,
+          "stars": 0,
+          "tags": 0,
+          "watchers": 0
+        },
+        "created_at": "2026-10-12T15:41:22Z",
+        "default_branch": "main",
+        "description": "Keep the job offers you saw and follow each application. Everything stays in your browser.",
+        "homepage": null,
+        "id": "github:Stanislas-Poisson/job-application-tracker",
+        "is_archived": false,
+        "is_fork": false,
+        "language": "TypeScript",
+        "languages": {
+          "HTML": {
+            "bytes": 1042,
+            "percent": 0.1
+          },
+          "JavaScript": {
+            "bytes": 113411,
+            "percent": 10.5
+          },
+          "Python": {
+            "bytes": 4358,
+            "percent": 0.4
+          },
+          "SCSS": {
+            "bytes": 8852,
+            "percent": 0.8
+          },
+          "TypeScript": {
+            "bytes": 754596,
+            "percent": 70.2
+          },
+          "Vue": {
+            "bytes": 192932,
+            "percent": 17.9
+          }
+        },
+        "license": "MIT",
+        "pushed_at": "2026-10-15T16:51:02Z",
+        "releases": [],
+        "size_kb": 2532,
+        "topics": [
+          "browser-extension",
+          "job-search",
+          "manifest-v3",
+          "pinia",
+          "pinia-orm",
+          "vue",
+          "wxt"
+        ],
+        "traffic": {
+          "paths": [],
+          "referrers": [],
+          "since_at": "2026-10-08T00:00:00Z"
+        },
+        "updated_at": "2026-10-14T16:43:54Z",
+        "visibility": "public"
+      },
+      "external_contributors": 0,
+      "forks": 0,
+      "last_activity": "2026-10-15T16:51:02Z",
+      "last_release_at": null,
+      "open_issues": 34,
+      "package": {},
+      "release_downloads": 0,
+      "stars": 0,
+      "traffic": {
+        "clones": {
+          "2026-10-08": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-09": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-10": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-11": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-12": {
+            "count": 431,
+            "uniques": 86
+          },
+          "2026-10-13": {
+            "count": 1625,
+            "uniques": 210
+          },
+          "2026-10-14": {
+            "count": 518,
+            "uniques": 104
+          },
+          "2026-10-15": {
+            "count": 727,
+            "uniques": 136
+          },
+          "2026-10-16": {
+            "count": 155,
+            "uniques": 66
+          },
+          "2026-10-17": {
+            "count": 20,
+            "uniques": 11
+          },
+          "2026-10-18": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-19": {
+            "count": 10,
+            "uniques": 6
+          },
+          "2026-10-20": {
+            "count": 3,
+            "uniques": 3
+          },
+          "2026-10-21": {
+            "count": 3,
+            "uniques": 2
+          }
+        },
+        "views": {
+          "2026-10-08": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-09": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-10": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-11": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-12": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-13": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-14": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-15": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-16": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-17": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-18": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-19": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-20": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-21": {
+            "count": 0,
+            "uniques": 0
+          }
+        }
+      },
+      "traffic_since_at": "2026-10-08T00:00:00Z",
+      "version": null,
+      "views_total": null,
+      "visitors_14d": 0
     },
     "kmark": {
+      "clones_total": 115,
+      "details": {
+        "community_health_percent": 100,
+        "counts": {
+          "branches": 2,
+          "commits": 102,
+          "contributors": 1,
+          "forks": 1,
+          "open_issues_and_prs": 0,
+          "open_pull_requests": 0,
+          "pull_requests": 33,
+          "releases": 3,
+          "stars": 0,
+          "tags": 3,
+          "watchers": 0
+        },
+        "created_at": "2013-02-23T21:22:31Z",
+        "default_branch": "main",
+        "description": "Custom Markdown parser written in PHP, extending the standard syntax to attach an ID and CSS classes directly to elements (e.g. # Title {#myId .class1 .class2}), designed for web use.",
+        "homepage": "https://stanislas-poisson.github.io/KMark/",
+        "id": "github:Stanislas-Poisson/KMark",
+        "is_archived": false,
+        "is_fork": false,
+        "language": "PHP",
+        "languages": {
+          "Makefile": {
+            "bytes": 187,
+            "percent": 0.2
+          },
+          "PHP": {
+            "bytes": 84327,
+            "percent": 99.8
+          }
+        },
+        "license": "MIT",
+        "pushed_at": "2026-10-10T20:08:44Z",
+        "releases": [
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-06T15:09:58Z",
+            "tag": "2.0.0"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-06T11:49:33Z",
+            "tag": "1.0.1"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-06T09:51:01Z",
+            "tag": "1.0.0"
+          }
+        ],
+        "size_kb": 270,
+        "topics": [
+          "css",
+          "markdown",
+          "markdown-parser",
+          "parser",
+          "php"
+        ],
+        "traffic": {
+          "paths": [
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/KMark",
+              "title": "Overview",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/KMark/issues/14",
+              "title": "/issues/14",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/KMark/issues/24",
+              "title": "/issues/24",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/KMark/issues/30",
+              "title": "/issues/30",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/KMark/issues/34",
+              "title": "/issues/34",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/KMark/issues/48",
+              "title": "/issues/48",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/KMark/pull/12",
+              "title": "/pull/12",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/KMark/pull/17",
+              "title": "/pull/17",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/KMark/pull/21",
+              "title": "/pull/21",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/KMark/pull/27",
+              "title": "/pull/27",
+              "uniques": 1
+            }
+          ],
+          "referrers": [],
+          "since_at": "2026-10-08T00:00:00Z"
+        },
+        "updated_at": "2026-10-10T20:08:49Z",
+        "visibility": "public"
+      },
+      "external_contributors": 0,
       "forks": 1,
       "last_activity": "2026-10-10T20:08:44Z",
+      "last_release_at": "2026-10-06T15:09:58Z",
       "open_issues": 0,
       "package": {
+        "details": {
+          "dependents": 0,
+          "downloads": {
+            "daily": 0,
+            "monthly": 3,
+            "total": 3
+          },
+          "favers": 0,
+          "language": "PHP",
+          "latest_release_at": "2026-10-06T15:08:58+00:00",
+          "name": "stanislas-poisson/kmark",
+          "suggesters": 0,
+          "versions": 5
+        },
         "monthly": 3,
         "stars": 0,
         "total": 3,
         "version": "2.0.0"
       },
+      "release_downloads": 0,
       "stars": 0,
-      "version": "2.0.0"
+      "traffic": {
+        "clones": {
+          "2026-10-08": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-09": {
+            "count": 42,
+            "uniques": 10
+          },
+          "2026-10-10": {
+            "count": 52,
+            "uniques": 12
+          },
+          "2026-10-11": {
+            "count": 9,
+            "uniques": 5
+          },
+          "2026-10-12": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-13": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-14": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-15": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-16": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-17": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-18": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-19": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-20": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-21": {
+            "count": 1,
+            "uniques": 1
+          }
+        },
+        "views": {
+          "2026-10-08": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-09": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-10": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-11": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-12": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-13": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-14": {
+            "count": 3,
+            "uniques": 1
+          },
+          "2026-10-15": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-16": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-17": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-18": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-19": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-20": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-21": {
+            "count": 1,
+            "uniques": 1
+          }
+        }
+      },
+      "traffic_since_at": "2026-10-08T00:00:00Z",
+      "version": "2.0.0",
+      "views_total": 14,
+      "visitors_14d": 1
     },
     "php-dev-tools": {
+      "clones_total": 239,
+      "details": {
+        "community_health_percent": 100,
+        "counts": {
+          "branches": 2,
+          "commits": 63,
+          "contributors": 1,
+          "forks": 0,
+          "open_issues_and_prs": 0,
+          "open_pull_requests": 0,
+          "pull_requests": 28,
+          "releases": 5,
+          "stars": 0,
+          "tags": 5,
+          "watchers": 0
+        },
+        "created_at": "2026-10-03T17:07:40Z",
+        "default_branch": "main",
+        "description": "The quality tools of the zairakai PHP projects, without Laravel: Pint, PHPStan, Rector, PHP Insights, markdownlint and the Git hooks, as a base that a project extends.",
+        "homepage": "https://stanislas-poisson.github.io/php-dev-tools/",
+        "id": "github:Stanislas-Poisson/php-dev-tools",
+        "is_archived": false,
+        "is_fork": false,
+        "language": "PHP",
+        "languages": {
+          "Makefile": {
+            "bytes": 1704,
+            "percent": 2.9
+          },
+          "PHP": {
+            "bytes": 51844,
+            "percent": 88.8
+          },
+          "Shell": {
+            "bytes": 4839,
+            "percent": 8.3
+          }
+        },
+        "license": "MIT",
+        "pushed_at": "2026-10-11T10:49:04Z",
+        "releases": [
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-10T20:23:12Z",
+            "tag": "1.1.1"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-10T20:06:32Z",
+            "tag": "1.1.0"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-06T11:52:15Z",
+            "tag": "1.0.1"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-03T20:12:21Z",
+            "tag": "1.0.0"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-03T18:52:52Z",
+            "tag": "0.1.0"
+          }
+        ],
+        "size_kb": 143,
+        "topics": [
+          "code-quality",
+          "dev-tools",
+          "git-hooks",
+          "php",
+          "phpinsights",
+          "phpstan",
+          "pint",
+          "rector"
+        ],
+        "traffic": {
+          "paths": [
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/php-dev-tools/issues/11",
+              "title": "/issues/11",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/php-dev-tools/issues/18",
+              "title": "/issues/18",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/php-dev-tools/issues/20",
+              "title": "/issues/20",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/php-dev-tools/issues/22",
+              "title": "/issues/22",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/php-dev-tools/issues/3",
+              "title": "/issues/3",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/php-dev-tools/issues/34",
+              "title": "/issues/34",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/php-dev-tools/pull/13",
+              "title": "/pull/13",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/php-dev-tools/pull/16",
+              "title": "/pull/16",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/php-dev-tools/pull/23",
+              "title": "/pull/23",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/php-dev-tools/pull/24",
+              "title": "/pull/24",
+              "uniques": 1
+            }
+          ],
+          "referrers": [],
+          "since_at": "2026-10-08T00:00:00Z"
+        },
+        "updated_at": "2026-10-11T10:49:09Z",
+        "visibility": "public"
+      },
+      "external_contributors": 0,
       "forks": 0,
       "last_activity": "2026-10-11T10:49:04Z",
+      "last_release_at": "2026-10-10T20:23:12Z",
       "open_issues": 0,
       "package": {
+        "details": {
+          "dependents": 4,
+          "downloads": {
+            "daily": 8,
+            "monthly": 2173,
+            "total": 2173
+          },
+          "favers": 0,
+          "language": "PHP",
+          "latest_release_at": "2026-10-10T20:22:26+00:00",
+          "name": "stanislas-poisson/php-dev-tools",
+          "suggesters": 0,
+          "versions": 7
+        },
         "monthly": 2173,
         "stars": 0,
         "total": 2173,
         "version": "1.1.1"
       },
+      "release_downloads": 0,
       "stars": 0,
-      "version": "1.1.1"
+      "traffic": {
+        "clones": {
+          "2026-10-08": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-09": {
+            "count": 43,
+            "uniques": 11
+          },
+          "2026-10-10": {
+            "count": 103,
+            "uniques": 29
+          },
+          "2026-10-11": {
+            "count": 60,
+            "uniques": 21
+          },
+          "2026-10-12": {
+            "count": 12,
+            "uniques": 9
+          },
+          "2026-10-13": {
+            "count": 7,
+            "uniques": 4
+          },
+          "2026-10-14": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-15": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-16": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-17": {
+            "count": 3,
+            "uniques": 2
+          },
+          "2026-10-18": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-19": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-20": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-21": {
+            "count": 1,
+            "uniques": 1
+          }
+        },
+        "views": {
+          "2026-10-08": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-09": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-10": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-11": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-12": {
+            "count": 3,
+            "uniques": 1
+          },
+          "2026-10-13": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-14": {
+            "count": 3,
+            "uniques": 1
+          },
+          "2026-10-15": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-16": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-17": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-18": {
+            "count": 4,
+            "uniques": 1
+          },
+          "2026-10-19": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-20": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-21": {
+            "count": 1,
+            "uniques": 1
+          }
+        }
+      },
+      "traffic_since_at": "2026-10-08T00:00:00Z",
+      "version": "1.1.1",
+      "views_total": 17,
+      "visitors_14d": 1
     },
     "pptx-enigma": {
+      "clones_total": 115,
+      "details": {
+        "community_health_percent": 100,
+        "counts": {
+          "branches": 2,
+          "commits": 92,
+          "contributors": 1,
+          "forks": 0,
+          "open_issues_and_prs": 0,
+          "open_pull_requests": 0,
+          "pull_requests": 31,
+          "releases": 1,
+          "stars": 0,
+          "tags": 1,
+          "watchers": 0
+        },
+        "created_at": "2017-02-09T05:57:27Z",
+        "default_branch": "main",
+        "description": "PHP tool that extracts voice-over notes from PPTX files: unzips the archive, walks every slide (glob), and parses speaker comments via regex into a clean, structured PHP array grouped by speaker and reference, ready for further processing.",
+        "homepage": "https://stanislas-poisson.github.io/pptx-enigma/",
+        "id": "github:Stanislas-Poisson/pptx-enigma",
+        "is_archived": false,
+        "is_fork": false,
+        "language": "PHP",
+        "languages": {
+          "Makefile": {
+            "bytes": 187,
+            "percent": 0.1
+          },
+          "PHP": {
+            "bytes": 127753,
+            "percent": 99.9
+          }
+        },
+        "license": "MIT",
+        "pushed_at": "2026-10-10T20:10:50Z",
+        "releases": [
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-06T15:01:12Z",
+            "tag": "1.0.0"
+          }
+        ],
+        "size_kb": 370,
+        "topics": [
+          "data-extraction",
+          "office-open-xml",
+          "parser",
+          "php",
+          "pptx",
+          "regex"
+        ],
+        "traffic": {
+          "paths": [
+            {
+              "count": 3,
+              "path": "/Stanislas-Poisson/pptx-enigma",
+              "title": "Overview",
+              "uniques": 3
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/pptx-enigma/blob/main/README.md",
+              "title": "/blob/main/README.md",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/pptx-enigma/issues/24",
+              "title": "/issues/24",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/pptx-enigma/issues/30",
+              "title": "/issues/30",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/pptx-enigma/issues/36",
+              "title": "/issues/36",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/pptx-enigma/issues/48",
+              "title": "/issues/48",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/pptx-enigma/issues/5",
+              "title": "/issues/5",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/pptx-enigma/pull/13",
+              "title": "/pull/13",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/pptx-enigma/pull/15",
+              "title": "/pull/15",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/pptx-enigma/pull/29",
+              "title": "/pull/29",
+              "uniques": 1
+            }
+          ],
+          "referrers": [
+            {
+              "count": 1,
+              "referrer": "github.com",
+              "uniques": 1
+            }
+          ],
+          "since_at": "2026-10-08T00:00:00Z"
+        },
+        "updated_at": "2026-10-10T20:10:55Z",
+        "visibility": "public"
+      },
+      "external_contributors": 0,
       "forks": 0,
       "last_activity": "2026-10-10T20:10:50Z",
+      "last_release_at": "2026-10-06T15:01:12Z",
       "open_issues": 0,
       "package": {
+        "details": {
+          "dependents": 0,
+          "downloads": {
+            "daily": 0,
+            "monthly": 1,
+            "total": 1
+          },
+          "favers": 0,
+          "language": "PHP",
+          "latest_release_at": "2026-10-06T11:48:58+00:00",
+          "name": "stanislas-poisson/pptx-enigma",
+          "suggesters": 0,
+          "versions": 3
+        },
         "monthly": 1,
         "stars": 0,
         "total": 1,
         "version": "1.0.0"
       },
+      "release_downloads": 0,
       "stars": 0,
-      "version": "1.0.0"
+      "traffic": {
+        "clones": {
+          "2026-10-08": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-09": {
+            "count": 34,
+            "uniques": 6
+          },
+          "2026-10-10": {
+            "count": 42,
+            "uniques": 8
+          },
+          "2026-10-11": {
+            "count": 29,
+            "uniques": 15
+          },
+          "2026-10-12": {
+            "count": 3,
+            "uniques": 3
+          },
+          "2026-10-13": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-14": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-15": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-16": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-17": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-18": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-19": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-20": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-21": {
+            "count": 1,
+            "uniques": 1
+          }
+        },
+        "views": {
+          "2026-10-08": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-09": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-10": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-11": {
+            "count": 3,
+            "uniques": 1
+          },
+          "2026-10-12": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-13": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-14": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-15": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-16": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-17": {
+            "count": 5,
+            "uniques": 3
+          },
+          "2026-10-18": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-19": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-20": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-21": {
+            "count": 2,
+            "uniques": 1
+          }
+        }
+      },
+      "traffic_since_at": "2026-10-08T00:00:00Z",
+      "version": "1.0.0",
+      "views_total": 16,
+      "visitors_14d": 4
+    },
+    "stanislas-js-dev-tools": {
+      "clones_total": 459,
+      "details": {
+        "community_health_percent": 100,
+        "counts": {
+          "branches": 2,
+          "commits": 33,
+          "contributors": 2,
+          "forks": 0,
+          "open_issues_and_prs": 0,
+          "open_pull_requests": 0,
+          "pull_requests": 18,
+          "releases": 2,
+          "stars": 0,
+          "tags": 2,
+          "watchers": 0
+        },
+        "created_at": "2026-10-09T20:31:51Z",
+        "default_branch": "main",
+        "description": "The quality tools of the JavaScript and TypeScript projects: ESLint, Prettier, Stylelint, Vitest, TypeScript and markdownlint configurations, as a base that a project extends.",
+        "homepage": "https://www.npmjs.com/package/@stanislas-poisson/js-dev-tools",
+        "id": "github:Stanislas-Poisson/js-dev-tools",
+        "is_archived": false,
+        "is_fork": false,
+        "language": "JavaScript",
+        "languages": {
+          "JavaScript": {
+            "bytes": 12477,
+            "percent": 100.0
+          }
+        },
+        "license": "MIT",
+        "pushed_at": "2026-10-21T15:37:16Z",
+        "releases": [
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-21T15:37:29Z",
+            "tag": "1.1.0"
+          },
+          {
+            "assets": [],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-11T21:23:53Z",
+            "tag": "1.0.0"
+          }
+        ],
+        "size_kb": 479,
+        "topics": [
+          "code-quality",
+          "dev-tools",
+          "eslint",
+          "prettier",
+          "stylelint",
+          "typescript",
+          "vitest"
+        ],
+        "traffic": {
+          "paths": [],
+          "referrers": [],
+          "since_at": "2026-10-08T00:00:00Z"
+        },
+        "updated_at": "2026-10-21T15:29:15Z",
+        "visibility": "public"
+      },
+      "external_contributors": 0,
+      "forks": 0,
+      "last_activity": "2026-10-21T15:37:16Z",
+      "last_release_at": "2026-10-21T15:37:29Z",
+      "open_issues": 0,
+      "package": {
+        "details": {
+          "created_at": "2026-10-11T21:24:04.284Z",
+          "dependencies": 20,
+          "downloads": {
+            "daily": 3,
+            "monthly": 261,
+            "weekly": 95,
+            "yearly": 261
+          },
+          "latest_release_at": "2026-10-21T15:42:57.541Z",
+          "license": "MIT",
+          "maintainers": 1,
+          "name": "@stanislas-poisson/js-dev-tools",
+          "unpacked_size": 19062,
+          "versions": 3
+        },
+        "monthly": 261,
+        "total": 261,
+        "total_label": "downloads / year",
+        "version": "1.1.0"
+      },
+      "release_downloads": 0,
+      "stars": 0,
+      "traffic": {
+        "clones": {
+          "2026-10-08": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-09": {
+            "count": 13,
+            "uniques": 9
+          },
+          "2026-10-10": {
+            "count": 9,
+            "uniques": 8
+          },
+          "2026-10-11": {
+            "count": 118,
+            "uniques": 42
+          },
+          "2026-10-12": {
+            "count": 41,
+            "uniques": 22
+          },
+          "2026-10-13": {
+            "count": 6,
+            "uniques": 6
+          },
+          "2026-10-14": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-15": {
+            "count": 5,
+            "uniques": 5
+          },
+          "2026-10-16": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-17": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-18": {
+            "count": 15,
+            "uniques": 3
+          },
+          "2026-10-19": {
+            "count": 8,
+            "uniques": 6
+          },
+          "2026-10-20": {
+            "count": 99,
+            "uniques": 18
+          },
+          "2026-10-21": {
+            "count": 139,
+            "uniques": 40
+          }
+        },
+        "views": {
+          "2026-10-08": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-09": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-10": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-11": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-12": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-13": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-14": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-15": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-16": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-17": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-18": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-19": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-20": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-21": {
+            "count": 0,
+            "uniques": 0
+          }
+        }
+      },
+      "traffic_since_at": "2026-10-08T00:00:00Z",
+      "version": "1.1.0",
+      "views_total": null,
+      "visitors_14d": 0
+    },
+    "teams-auto-presence": {
+      "clones_total": 663,
+      "details": {
+        "community_health_percent": 100,
+        "counts": {
+          "branches": 2,
+          "commits": 52,
+          "contributors": 2,
+          "forks": 0,
+          "open_issues_and_prs": 2,
+          "open_pull_requests": 0,
+          "pull_requests": 32,
+          "releases": 5,
+          "stars": 0,
+          "tags": 5,
+          "watchers": 0
+        },
+        "created_at": "2026-08-03T14:27:56Z",
+        "default_branch": "main",
+        "description": "Chrome extension that automatically switches your Microsoft Teams presence status based on a configurable weekly schedule. No admin permissions, no external script, runs entirely client-side in the browser.",
+        "homepage": "https://chromewebstore.google.com/detail/teams-auto-presence/ccecckoeekjnndicanahkpoblpgdocel",
+        "id": "github:Stanislas-Poisson/teams-auto-presence",
+        "is_archived": false,
+        "is_fork": false,
+        "language": "JavaScript",
+        "languages": {
+          "HTML": {
+            "bytes": 22419,
+            "percent": 29.5
+          },
+          "JavaScript": {
+            "bytes": 43575,
+            "percent": 57.4
+          },
+          "Python": {
+            "bytes": 7709,
+            "percent": 10.2
+          },
+          "Shell": {
+            "bytes": 2177,
+            "percent": 2.9
+          }
+        },
+        "license": "MIT",
+        "pushed_at": "2026-10-12T14:51:20Z",
+        "releases": [
+          {
+            "assets": [
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.3-firefox.zip",
+                "size": 28881
+              },
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.3-firefox.zip.sha256",
+                "size": 109
+              },
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.3.zip",
+                "size": 28639
+              },
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.3.zip.sha256",
+                "size": 101
+              }
+            ],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-12T14:19:03Z",
+            "tag": "1.1.3"
+          },
+          {
+            "assets": [
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.2-firefox.zip",
+                "size": 31471
+              },
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.2-firefox.zip.sha256",
+                "size": 109
+              },
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.2.zip",
+                "size": 31229
+              },
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.2.zip.sha256",
+                "size": 101
+              }
+            ],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-12T10:53:11Z",
+            "tag": "1.1.2"
+          },
+          {
+            "assets": [
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.1-firefox.zip",
+                "size": 31340
+              },
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.1-firefox.zip.sha256",
+                "size": 109
+              },
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.1.zip",
+                "size": 31098
+              },
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.1.zip.sha256",
+                "size": 101
+              }
+            ],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-12T09:24:21Z",
+            "tag": "1.1.1"
+          },
+          {
+            "assets": [
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.0-firefox.zip",
+                "size": 31346
+              },
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.0-firefox.zip.sha256",
+                "size": 109
+              },
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.0.zip",
+                "size": 31103
+              },
+              {
+                "downloads": 0,
+                "name": "teams-auto-presence-1.1.0.zip.sha256",
+                "size": 101
+              }
+            ],
+            "downloads": 0,
+            "prerelease": false,
+            "published_at": "2026-10-06T11:52:20Z",
+            "tag": "1.1.0"
+          },
+          {
+            "assets": [
+              {
+                "downloads": 2,
+                "name": "teams-auto-presence-v1.0.0.zip",
+                "size": 30631
+              }
+            ],
+            "downloads": 2,
+            "prerelease": false,
+            "published_at": "2026-08-03T15:53:36Z",
+            "tag": "v1.0.0"
+          }
+        ],
+        "size_kb": 1633,
+        "topics": [
+          "automation",
+          "browser-automation",
+          "chrome-extensions",
+          "chromium-extension",
+          "javascript",
+          "manifest-v3",
+          "microsoft-teams",
+          "productivity-tool"
+        ],
+        "traffic": {
+          "paths": [
+            {
+              "count": 2,
+              "path": "/Stanislas-Poisson/teams-auto-presence",
+              "title": "Overview",
+              "uniques": 2
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/teams-auto-presence/issues/12",
+              "title": "/issues/12",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/teams-auto-presence/issues/14",
+              "title": "/issues/14",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/teams-auto-presence/issues/19",
+              "title": "/issues/19",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/teams-auto-presence/issues/2",
+              "title": "/issues/2",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/teams-auto-presence/issues/3",
+              "title": "/issues/3",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/teams-auto-presence/issues/4",
+              "title": "/issues/4",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/teams-auto-presence/issues/5",
+              "title": "/issues/5",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/teams-auto-presence/pull/11",
+              "title": "/pull/11",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/teams-auto-presence/pull/16",
+              "title": "/pull/16",
+              "uniques": 1
+            }
+          ],
+          "referrers": [
+            {
+              "count": 1,
+              "referrer": "github.com",
+              "uniques": 1
+            }
+          ],
+          "since_at": "2026-10-08T00:00:00Z"
+        },
+        "updated_at": "2026-10-12T14:51:24Z",
+        "visibility": "public"
+      },
+      "external_contributors": 0,
+      "forks": 0,
+      "last_activity": "2026-10-12T14:51:20Z",
+      "last_release_at": "2026-10-12T14:19:03Z",
+      "open_issues": 2,
+      "package": {},
+      "release_downloads": 2,
+      "stars": 0,
+      "traffic": {
+        "clones": {
+          "2026-10-08": {
+            "count": 67,
+            "uniques": 22
+          },
+          "2026-10-09": {
+            "count": 8,
+            "uniques": 5
+          },
+          "2026-10-10": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-11": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-12": {
+            "count": 511,
+            "uniques": 93
+          },
+          "2026-10-13": {
+            "count": 43,
+            "uniques": 25
+          },
+          "2026-10-14": {
+            "count": 21,
+            "uniques": 10
+          },
+          "2026-10-15": {
+            "count": 5,
+            "uniques": 5
+          },
+          "2026-10-16": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-17": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-18": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-19": {
+            "count": 2,
+            "uniques": 2
+          },
+          "2026-10-20": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-21": {
+            "count": 0,
+            "uniques": 0
+          }
+        },
+        "views": {
+          "2026-10-08": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-09": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-10": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-11": {
+            "count": 3,
+            "uniques": 1
+          },
+          "2026-10-12": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-13": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-14": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-15": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-16": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-17": {
+            "count": 4,
+            "uniques": 2
+          },
+          "2026-10-18": {
+            "count": 1,
+            "uniques": 1
+          },
+          "2026-10-19": {
+            "count": 2,
+            "uniques": 1
+          },
+          "2026-10-20": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-21": {
+            "count": 1,
+            "uniques": 1
+          }
+        }
+      },
+      "traffic_since_at": "2026-10-08T00:00:00Z",
+      "version": "1.1.3",
+      "views_total": 14,
+      "visitors_14d": 2
     }
   },
   "totals": {
-    "downloads_month": 2185,
+    "downloads_month": 2446,
     "downloads_total": 2185,
-    "open_issues": 0,
-    "packages": 4,
-    "projects": 5,
-    "release_downloads": 5,
+    "open_issues": 36,
+    "packages": 5,
+    "projects": 8,
+    "release_downloads": 7,
     "stars": 0
+  },
+  "totals_detailed": {
+    "clones": 6693,
+    "counts": {
+      "branches": 16,
+      "commits": 630,
+      "contributors": 14,
+      "forks": 2,
+      "open_issues_and_prs": 36,
+      "open_pull_requests": 0,
+      "pull_requests": 305,
+      "releases": 27,
+      "stars": 0,
+      "tags": 27,
+      "watchers": 0
+    },
+    "downloads_month": 2446,
+    "languages": {
+      "HTML": {
+        "bytes": 44893,
+        "percent": 2.7
+      },
+      "JavaScript": {
+        "bytes": 189703,
+        "percent": 11.6
+      },
+      "Makefile": {
+        "bytes": 2721,
+        "percent": 0.2
+      },
+      "PHP": {
+        "bytes": 402695,
+        "percent": 24.6
+      },
+      "Python": {
+        "bytes": 22537,
+        "percent": 1.4
+      },
+      "SCSS": {
+        "bytes": 8852,
+        "percent": 0.5
+      },
+      "Shell": {
+        "bytes": 15529,
+        "percent": 1.0
+      },
+      "TypeScript": {
+        "bytes": 754596,
+        "percent": 46.2
+      },
+      "Vue": {
+        "bytes": 192932,
+        "percent": 11.8
+      }
+    },
+    "projects": 8,
+    "release_downloads": 7,
+    "views": 94
   },
   "updated_at": "2026-10-22"
 }
