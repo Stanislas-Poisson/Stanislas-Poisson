@@ -2,11 +2,11 @@
   "dataset_data": {
     "data_gouv": {
       "discussions": 0,
-      "downloads": 11650,
+      "downloads": 11676,
       "last_update": "2026-10-09T13:49:36.277000+00:00",
       "quality": 100,
       "reuses": 3,
-      "views": 51021,
+      "views": 51084,
       "views_by_format": {
         "csv": 113,
         "json": 11,
@@ -31,16 +31,16 @@
       "successions": 8480
     },
     "github": {
-      "clones_total": 1475,
+      "clones_total": 1491,
       "details": {
         "community_health_percent": 100,
         "counts": {
-          "branches": 7,
+          "branches": 6,
           "commits": 163,
           "contributors": 2,
           "forks": 19,
-          "open_issues_and_prs": 4,
-          "open_pull_requests": 3,
+          "open_issues_and_prs": 3,
+          "open_pull_requests": 2,
           "pull_requests": 90,
           "releases": 11,
           "stars": 87,
@@ -70,17 +70,17 @@
           }
         },
         "license": "MIT",
-        "pushed_at": "2026-10-22T21:04:59Z",
+        "pushed_at": "2026-10-22T21:16:32Z",
         "releases": [
           {
             "assets": [
               {
-                "downloads": 50,
+                "downloads": 51,
                 "name": "french-postal-code-4.1.2-csv.zip",
                 "size": 2145385
               },
               {
-                "downloads": 22,
+                "downloads": 23,
                 "name": "french-postal-code-4.1.2-json.zip",
                 "size": 2562569
               },
@@ -90,22 +90,22 @@
                 "size": 1882971
               },
               {
-                "downloads": 25,
+                "downloads": 29,
                 "name": "french-postal-code-4.1.2-sql.zip",
                 "size": 1964355
               },
               {
-                "downloads": 23,
+                "downloads": 24,
                 "name": "SHA256SUMS",
                 "size": 483
               },
               {
-                "downloads": 41,
+                "downloads": 45,
                 "name": "statistics.json",
                 "size": 360
               }
             ],
-            "downloads": 165,
+            "downloads": 176,
             "prerelease": false,
             "published_at": "2026-10-09T13:49:21Z",
             "tag": "4.1.2"
@@ -285,7 +285,7 @@
             "tag": "1.0"
           }
         ],
-        "size_kb": 10914,
+        "size_kb": 10916,
         "topics": [
           "communes",
           "csv",
@@ -306,10 +306,10 @@
         "traffic": {
           "paths": [
             {
-              "count": 14,
+              "count": 13,
               "path": "/Stanislas-Poisson/French-Postal-Code",
               "title": "Overview",
-              "uniques": 11
+              "uniques": 10
             },
             {
               "count": 6,
@@ -318,27 +318,15 @@
               "uniques": 4
             },
             {
-              "count": 5,
+              "count": 4,
               "path": "/Stanislas-Poisson/French-Postal-Code/blob/main/README.md",
               "title": "/blob/main/README.md",
-              "uniques": 5
-            },
-            {
-              "count": 3,
-              "path": "/Stanislas-Poisson/French-Postal-Code/blob/main/CHANGELOG.md",
-              "title": "/blob/main/CHANGELOG.md",
-              "uniques": 3
+              "uniques": 4
             },
             {
               "count": 3,
               "path": "/Stanislas-Poisson/French-Postal-Code/blob/main/Exports/csv/cities.csv",
               "title": "/blob/main/Exports/csv/cities.csv",
-              "uniques": 3
-            },
-            {
-              "count": 3,
-              "path": "/Stanislas-Poisson/French-Postal-Code/tree/main/app",
-              "title": "/tree/main/app",
               "uniques": 3
             },
             {
@@ -355,6 +343,12 @@
             },
             {
               "count": 2,
+              "path": "/Stanislas-Poisson/French-Postal-Code/blob/main/CHANGELOG.md",
+              "title": "/blob/main/CHANGELOG.md",
+              "uniques": 2
+            },
+            {
+              "count": 2,
               "path": "/Stanislas-Poisson/French-Postal-Code/blob/main/Makefile",
               "title": "/blob/main/Makefile",
               "uniques": 2
@@ -363,6 +357,12 @@
               "count": 2,
               "path": "/Stanislas-Poisson/French-Postal-Code/blob/main/composer.lock",
               "title": "/blob/main/composer.lock",
+              "uniques": 2
+            },
+            {
+              "count": 2,
+              "path": "/Stanislas-Poisson/French-Postal-Code/blob/main/phpunit.xml",
+              "title": "/blob/main/phpunit.xml",
               "uniques": 2
             }
           ],
@@ -373,9 +373,9 @@
               "uniques": 3
             },
             {
-              "count": 2,
+              "count": 1,
               "referrer": "data.gouv.fr",
-              "uniques": 2
+              "uniques": 1
             },
             {
               "count": 1,
@@ -391,11 +391,11 @@
       "forks": 19,
       "last_commit": "2026-10-10T20:31:40Z",
       "open_issues": 1,
-      "release_downloads": 1592,
+      "release_downloads": 1603,
       "stars": 87,
       "traffic_since_at": "2026-09-18T00:00:00Z",
       "views_total": 199,
-      "visitors_14d": 27
+      "visitors_14d": 24
     },
     "traffic": {
       "clones": {
@@ -526,6 +526,10 @@
         "2026-10-21": {
           "count": 7,
           "uniques": 6
+        },
+        "2026-10-22": {
+          "count": 16,
+          "uniques": 10
         }
       },
       "views": {
@@ -656,6 +660,10 @@
         "2026-10-21": {
           "count": 2,
           "uniques": 2
+        },
+        "2026-10-22": {
+          "count": 0,
+          "uniques": 0
         }
       }
     }
@@ -694,6 +702,15 @@
       "open_issues": 36,
       "packages": 5,
       "projects": 8,
+      "release_downloads": 7,
+      "stars": 0
+    },
+    "2026-10-23": {
+      "downloads_month": 2448,
+      "downloads_total": 2187,
+      "open_issues": 36,
+      "packages": 5,
+      "projects": 9,
       "release_downloads": 7,
       "stars": 0
     }
@@ -860,20 +877,20 @@
             },
             {
               "count": 1,
+              "path": "/Stanislas-Poisson/devtools-resize-fix/pull/12",
+              "title": "/pull/12",
+              "uniques": 1
+            },
+            {
+              "count": 1,
               "path": "/Stanislas-Poisson/devtools-resize-fix/pull/17",
               "title": "/pull/17",
               "uniques": 1
             },
             {
               "count": 1,
-              "path": "/Stanislas-Poisson/devtools-resize-fix/pull/7",
-              "title": "/pull/7",
-              "uniques": 1
-            },
-            {
-              "count": 1,
-              "path": "/Stanislas-Poisson/devtools-resize-fix/pull/9",
-              "title": "/pull/9",
+              "path": "/Stanislas-Poisson/devtools-resize-fix/pull/22",
+              "title": "/pull/22",
               "uniques": 1
             }
           ],
@@ -954,6 +971,10 @@
           "2026-10-21": {
             "count": 1,
             "uniques": 1
+          },
+          "2026-10-22": {
+            "count": 0,
+            "uniques": 0
           }
         },
         "views": {
@@ -1012,16 +1033,202 @@
           "2026-10-21": {
             "count": 0,
             "uniques": 0
+          },
+          "2026-10-22": {
+            "count": 2,
+            "uniques": 1
           }
         }
       },
       "traffic_since_at": "2026-10-08T00:00:00Z",
       "version": "1.1.1",
-      "views_total": 17,
+      "views_total": 19,
       "visitors_14d": 4
     },
+    "dotfiles": {
+      "clones_total": null,
+      "details": {
+        "community_health_percent": 100,
+        "counts": {
+          "branches": 1,
+          "commits": 1,
+          "contributors": 1,
+          "forks": 0,
+          "open_issues_and_prs": 0,
+          "open_pull_requests": 0,
+          "pull_requests": 0,
+          "releases": 0,
+          "stars": 0,
+          "tags": 0,
+          "watchers": 0
+        },
+        "created_at": "2026-10-23T17:15:31Z",
+        "default_branch": "main",
+        "description": "Bash setup for Debian on WSL2: one file per topic, a git-aware prompt, and tooling that keeps secrets out of the shell and out of Git.",
+        "homepage": null,
+        "id": "github:Stanislas-Poisson/dotfiles",
+        "is_archived": false,
+        "is_fork": false,
+        "language": "Shell",
+        "languages": {
+          "Shell": {
+            "bytes": 17181,
+            "percent": 100.0
+          }
+        },
+        "license": "MIT",
+        "pushed_at": "2026-10-23T17:15:36Z",
+        "releases": [],
+        "size_kb": 0,
+        "topics": [
+          "bash",
+          "bashrc",
+          "debian",
+          "dotfiles",
+          "shell",
+          "wsl"
+        ],
+        "traffic": {
+          "paths": [],
+          "referrers": [],
+          "since_at": "2026-10-10T00:00:00Z"
+        },
+        "updated_at": "2026-10-23T17:15:46Z",
+        "visibility": "public"
+      },
+      "external_contributors": 0,
+      "forks": 0,
+      "last_activity": "2026-10-23T17:15:36Z",
+      "last_release_at": null,
+      "open_issues": 0,
+      "package": {},
+      "release_downloads": 0,
+      "stars": 0,
+      "traffic": {
+        "clones": {
+          "2026-10-10": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-11": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-12": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-13": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-14": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-15": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-16": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-17": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-18": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-19": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-20": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-21": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-22": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-23": {
+            "count": 0,
+            "uniques": 0
+          }
+        },
+        "views": {
+          "2026-10-10": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-11": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-12": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-13": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-14": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-15": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-16": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-17": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-18": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-19": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-20": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-21": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-22": {
+            "count": 0,
+            "uniques": 0
+          },
+          "2026-10-23": {
+            "count": 0,
+            "uniques": 0
+          }
+        }
+      },
+      "traffic_since_at": "2026-10-10T00:00:00Z",
+      "version": null,
+      "views_total": null,
+      "visitors_14d": 0
+    },
     "french-postal-code-package": {
-      "clones_total": 1325,
+      "clones_total": 1326,
       "details": {
         "community_health_percent": 100,
         "counts": {
@@ -1132,15 +1339,21 @@
         "traffic": {
           "paths": [
             {
-              "count": 1,
+              "count": 2,
               "path": "/Stanislas-Poisson/French-Postal-Code-Package",
               "title": "Overview",
-              "uniques": 1
+              "uniques": 2
             },
             {
               "count": 1,
               "path": "/Stanislas-Poisson/French-Postal-Code-Package/issues/10",
               "title": "/issues/10",
+              "uniques": 1
+            },
+            {
+              "count": 1,
+              "path": "/Stanislas-Poisson/French-Postal-Code-Package/issues/14",
+              "title": "/issues/14",
               "uniques": 1
             },
             {
@@ -1183,12 +1396,6 @@
               "count": 1,
               "path": "/Stanislas-Poisson/French-Postal-Code-Package/pull/27",
               "title": "/pull/27",
-              "uniques": 1
-            },
-            {
-              "count": 1,
-              "path": "/Stanislas-Poisson/French-Postal-Code-Package/pull/33",
-              "title": "/pull/33",
               "uniques": 1
             }
           ],
@@ -1282,6 +1489,10 @@
           "2026-10-21": {
             "count": 1,
             "uniques": 1
+          },
+          "2026-10-22": {
+            "count": 1,
+            "uniques": 1
           }
         },
         "views": {
@@ -1340,16 +1551,20 @@
           "2026-10-21": {
             "count": 0,
             "uniques": 0
+          },
+          "2026-10-22": {
+            "count": 2,
+            "uniques": 1
           }
         }
       },
       "traffic_since_at": "2026-10-08T00:00:00Z",
       "version": "5.0.0",
-      "views_total": 16,
+      "views_total": 18,
       "visitors_14d": 2
     },
     "job-application-tracker": {
-      "clones_total": 3493,
+      "clones_total": 3494,
       "details": {
         "community_health_percent": 100,
         "counts": {
@@ -1485,6 +1700,10 @@
           "2026-10-21": {
             "count": 3,
             "uniques": 2
+          },
+          "2026-10-22": {
+            "count": 1,
+            "uniques": 1
           }
         },
         "views": {
@@ -1543,6 +1762,10 @@
           "2026-10-21": {
             "count": 0,
             "uniques": 0
+          },
+          "2026-10-22": {
+            "count": 0,
+            "uniques": 0
           }
         }
       },
@@ -1552,7 +1775,7 @@
       "visitors_14d": 0
     },
     "kmark": {
-      "clones_total": 115,
+      "clones_total": 116,
       "details": {
         "community_health_percent": 100,
         "counts": {
@@ -1772,6 +1995,10 @@
           "2026-10-21": {
             "count": 1,
             "uniques": 1
+          },
+          "2026-10-22": {
+            "count": 1,
+            "uniques": 1
           }
         },
         "views": {
@@ -1830,6 +2057,10 @@
           "2026-10-21": {
             "count": 1,
             "uniques": 1
+          },
+          "2026-10-22": {
+            "count": 0,
+            "uniques": 0
           }
         }
       },
@@ -1979,14 +2210,14 @@
             },
             {
               "count": 1,
-              "path": "/Stanislas-Poisson/php-dev-tools/pull/23",
-              "title": "/pull/23",
+              "path": "/Stanislas-Poisson/php-dev-tools/pull/17",
+              "title": "/pull/17",
               "uniques": 1
             },
             {
               "count": 1,
-              "path": "/Stanislas-Poisson/php-dev-tools/pull/24",
-              "title": "/pull/24",
+              "path": "/Stanislas-Poisson/php-dev-tools/pull/23",
+              "title": "/pull/23",
               "uniques": 1
             }
           ],
@@ -2005,9 +2236,9 @@
         "details": {
           "dependents": 4,
           "downloads": {
-            "daily": 8,
-            "monthly": 2173,
-            "total": 2173
+            "daily": 2,
+            "monthly": 2175,
+            "total": 2175
           },
           "favers": 0,
           "language": "PHP",
@@ -2016,9 +2247,9 @@
           "suggesters": 0,
           "versions": 7
         },
-        "monthly": 2173,
+        "monthly": 2175,
         "stars": 0,
-        "total": 2173,
+        "total": 2175,
         "version": "1.1.1"
       },
       "release_downloads": 0,
@@ -2080,6 +2311,10 @@
           "2026-10-21": {
             "count": 1,
             "uniques": 1
+          },
+          "2026-10-22": {
+            "count": 0,
+            "uniques": 0
           }
         },
         "views": {
@@ -2138,16 +2373,20 @@
           "2026-10-21": {
             "count": 1,
             "uniques": 1
+          },
+          "2026-10-22": {
+            "count": 1,
+            "uniques": 1
           }
         }
       },
       "traffic_since_at": "2026-10-08T00:00:00Z",
       "version": "1.1.1",
-      "views_total": 17,
+      "views_total": 18,
       "visitors_14d": 1
     },
     "pptx-enigma": {
-      "clones_total": 115,
+      "clones_total": 116,
       "details": {
         "community_health_percent": 100,
         "counts": {
@@ -2360,6 +2599,10 @@
           "2026-10-21": {
             "count": 1,
             "uniques": 1
+          },
+          "2026-10-22": {
+            "count": 1,
+            "uniques": 1
           }
         },
         "views": {
@@ -2418,6 +2661,10 @@
           "2026-10-21": {
             "count": 2,
             "uniques": 1
+          },
+          "2026-10-22": {
+            "count": 0,
+            "uniques": 0
           }
         }
       },
@@ -2427,7 +2674,7 @@
       "visitors_14d": 4
     },
     "stanislas-js-dev-tools": {
-      "clones_total": 459,
+      "clones_total": 468,
       "details": {
         "community_health_percent": 100,
         "counts": {
@@ -2579,6 +2826,10 @@
           "2026-10-21": {
             "count": 139,
             "uniques": 40
+          },
+          "2026-10-22": {
+            "count": 9,
+            "uniques": 4
           }
         },
         "views": {
@@ -2637,6 +2888,10 @@
           "2026-10-21": {
             "count": 0,
             "uniques": 0
+          },
+          "2026-10-22": {
+            "count": 0,
+            "uniques": 0
           }
         }
       },
@@ -2646,7 +2901,7 @@
       "visitors_14d": 0
     },
     "teams-auto-presence": {
-      "clones_total": 663,
+      "clones_total": 666,
       "details": {
         "community_health_percent": 100,
         "counts": {
@@ -2831,10 +3086,10 @@
         "traffic": {
           "paths": [
             {
-              "count": 2,
+              "count": 4,
               "path": "/Stanislas-Poisson/teams-auto-presence",
               "title": "Overview",
-              "uniques": 2
+              "uniques": 3
             },
             {
               "count": 1,
@@ -2968,6 +3223,10 @@
           "2026-10-21": {
             "count": 0,
             "uniques": 0
+          },
+          "2026-10-22": {
+            "count": 3,
+            "uniques": 3
           }
         },
         "views": {
@@ -3026,30 +3285,34 @@
           "2026-10-21": {
             "count": 1,
             "uniques": 1
+          },
+          "2026-10-22": {
+            "count": 3,
+            "uniques": 2
           }
         }
       },
       "traffic_since_at": "2026-10-08T00:00:00Z",
       "version": "1.1.3",
-      "views_total": 14,
-      "visitors_14d": 2
+      "views_total": 17,
+      "visitors_14d": 3
     }
   },
   "totals": {
-    "downloads_month": 2446,
-    "downloads_total": 2185,
+    "downloads_month": 2448,
+    "downloads_total": 2187,
     "open_issues": 36,
     "packages": 5,
-    "projects": 8,
+    "projects": 9,
     "release_downloads": 7,
     "stars": 0
   },
   "totals_detailed": {
-    "clones": 6693,
+    "clones": 6709,
     "counts": {
-      "branches": 16,
-      "commits": 630,
-      "contributors": 14,
+      "branches": 17,
+      "commits": 631,
+      "contributors": 15,
       "forks": 2,
       "open_issues_and_prs": 36,
       "open_pull_requests": 0,
@@ -3059,7 +3322,7 @@
       "tags": 27,
       "watchers": 0
     },
-    "downloads_month": 2446,
+    "downloads_month": 2448,
     "languages": {
       "HTML": {
         "bytes": 44893,
@@ -3067,7 +3330,7 @@
       },
       "JavaScript": {
         "bytes": 189703,
-        "percent": 11.6
+        "percent": 11.5
       },
       "Makefile": {
         "bytes": 2721,
@@ -3075,7 +3338,7 @@
       },
       "PHP": {
         "bytes": 402695,
-        "percent": 24.6
+        "percent": 24.4
       },
       "Python": {
         "bytes": 22537,
@@ -3086,21 +3349,21 @@
         "percent": 0.5
       },
       "Shell": {
-        "bytes": 15529,
-        "percent": 1.0
+        "bytes": 32710,
+        "percent": 2.0
       },
       "TypeScript": {
         "bytes": 754596,
-        "percent": 46.2
+        "percent": 45.7
       },
       "Vue": {
         "bytes": 192932,
-        "percent": 11.8
+        "percent": 11.7
       }
     },
-    "projects": 8,
+    "projects": 9,
     "release_downloads": 7,
-    "views": 94
+    "views": 102
   },
-  "updated_at": "2026-10-22"
+  "updated_at": "2026-10-23"
 }
