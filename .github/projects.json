@@ -15,6 +15,7 @@
     {"slug": "stanislas-js-dev-tools", "name": "js-dev-tools", "platform": "github", "repo": "Stanislas-Poisson/js-dev-tools", "registry": "npm:@stanislas-poisson/js-dev-tools"},
     {"slug": "job-application-tracker", "name": "job-application-tracker", "platform": "github", "repo": "Stanislas-Poisson/job-application-tracker"},
     {"slug": "teams-auto-presence", "name": "teams-auto-presence", "platform": "github", "repo": "Stanislas-Poisson/teams-auto-presence"},
+    {"slug": "dotfiles", "name": "dotfiles", "platform": "github", "repo": "Stanislas-Poisson/dotfiles"},
     {"slug": "laravel-auth", "name": "laravel-auth", "platform": "gitlab", "repo": "zairakai/php-packages/laravel-auth", "registry": "packagist:zairakai/laravel-auth"},
     {"slug": "laravel-twitch", "name": "laravel-twitch", "platform": "gitlab", "repo": "zairakai/php-packages/laravel-twitch", "registry": "packagist:zairakai/laravel-twitch"},
     {"slug": "laravel-essentials", "name": "laravel-essentials", "platform": "gitlab", "repo": "zairakai/php-packages/laravel-essentials", "registry": "packagist:zairakai/laravel-essentials"},
