@@ -47,7 +47,9 @@ Operational quickly on an unknown codebase, in autonomy.
 - **[job-application-tracker][repo-jat]**: keep the job offers you saw and follow each application. Everything stays in your browser. Vue, Pinia, translated in several languages including right-to-left ones, colour-blind friendly themes.
 - **[devtools-resize-fix][repo-drf]**: fixes a Chromium layout bug when DevTools is docked. 166 installs in 3 months on the Chrome Web Store.
 
-**Zairakai ecosystem**, built in the open with live coding on [Twitch][twitch], on [gitlab.com/zairakai][gitlab]:
+### Zairakai ecosystem
+
+Built in the open with live coding on [Twitch][twitch], on [gitlab.com/zairakai][gitlab]:
 
 - 7 Laravel packages (activity log, headless authentication, Twitch API, Eloquent and Blade helpers) and 6 TypeScript packages (HTTP client, i18n, accessible Vue 3 components, SCSS framework), about 20 documented public repositories.
 - Production Docker images (Alpine, multi-stage, non-root) for PHP and Node.js.
