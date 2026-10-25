@@ -1,21 +1,83 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="420" height="185" viewBox="0 0 420 185">
-  <!-- generated_at: 2026-10-23T17:33:51Z -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="en" lang="en" width="420" height="114" viewBox="0 0 420 114" role="img" aria-labelledby="langs-title langs-desc">
+  <!-- generated_at: 2026-10-25T20:18:26Z -->
+  <title id="langs-title">Most used languages (public repos)</title>
+  <desc id="langs-desc">PHP 79.2%, JavaScript 8.5%, HTML 4.8%, Shell 4.4%, Other 3.1%</desc>
   <style>
-    .title { font: 600 16px sans-serif; fill: #333; }
-  </style>
-  <rect width="420" height="185" rx="8" fill="#fff" stroke="#e1e4e8" />
-  <text x="20" y="30" class="title">Most used languages (public repos)</text>
-  
-  <text x="20" y="55" font-family="sans-serif" font-size="13" fill="#555">TypeScript</text>
-  <rect x="20" y="61" width="83.2" height="8" rx="4" fill="#3178c6" />
-  <text x="113.2" y="68" font-family="sans-serif" font-size="12" fill="#555">37.8%</text>
-  <text x="20" y="85" font-family="sans-serif" font-size="13" fill="#555">PHP</text>
-  <rect x="20" y="91" width="80.5" height="8" rx="4" fill="#777bb4" />
-  <text x="110.5" y="98" font-family="sans-serif" font-size="12" fill="#555">36.6%</text>
-  <text x="20" y="115" font-family="sans-serif" font-size="13" fill="#555">Vue</text>
-  <rect x="20" y="121" width="21.3" height="8" rx="4" fill="#8c8c8c" />
-  <text x="51.3" y="128" font-family="sans-serif" font-size="12" fill="#555">9.7%</text>
-  <text x="20" y="145" font-family="sans-serif" font-size="13" fill="#555">Autres</text>
-  <rect x="20" y="151" width="35.0" height="8" rx="4" fill="#8c8c8c" />
-  <text x="65.0" y="158" font-family="sans-serif" font-size="12" fill="#555">15.9%</text>
+    svg {
+      --_bg: #ffffff; --_ink: #1f2328; --_tile: #e2e6ea; --_muted: #59636e;
+      --_line: #d0d7de; --_accent: #0969da;
+    }
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --_bg: #0d1117; --_ink: #e6edf3; --_tile: #262c34; --_muted: #9198a1;
+        --_line: #30363d; --_accent: #58a6ff;
+      }
+    }
+    @supports (color: light-dark(#fff, #000)) {
+      svg {
+        color-scheme: light dark;
+        --_bg: var(--card-bg, light-dark(#ffffff, #0d1117));
+        --_ink: var(--card-ink, light-dark(#1f2328, #e6edf3));
+      }
+    }
+    @supports (color: color-mix(in oklab, red, blue)) {
+      svg {
+        --_tile: color-mix(in oklab, var(--_ink) 12%, var(--_bg));
+        --_muted: color-mix(in oklab, var(--_ink) 72%, var(--_bg));
+        --_line: color-mix(in oklab, var(--_ink) 15%, var(--_bg));
+        --_accent: color-mix(in oklab, var(--_ink) 45%, #0969da);
+      }
+      @media (prefers-contrast: more) {
+        svg {
+          --_muted: color-mix(in oklab, var(--_ink) 90%, var(--_bg));
+          --_line: color-mix(in oklab, var(--_ink) 45%, var(--_bg));
+          --_tile: color-mix(in oklab, var(--_ink) 20%, var(--_bg));
+          --_accent: color-mix(in oklab, var(--_ink) 70%, #0969da);
+        }
+      }
+    }
+    .card { fill: var(--_bg); stroke: var(--_line); }
+    .tile { fill: var(--_tile); }
+    .sep { stroke: var(--_bg); stroke-width: 2; }
+    text { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; fill: var(--_ink); }
+    .title { font-size: 15px; font-weight: 600; }
+    .value { font-size: 20px; font-weight: 700; fill: var(--_accent); }
+    .label, .pct { font-size: 12px; fill: var(--_muted); }
+    .lang { font-size: 12px; font-weight: 600; }
+    /* Forced colours (Windows high contrast): the system palette */
+    @media (forced-colors: active) {
+      .card, .tile { fill: Canvas; stroke: CanvasText; }
+      .sep { stroke: Canvas; }
+      text, .value, .label, .pct { fill: CanvasText; }
+    }
+</style>
+  <rect x="0.5" y="0.5" width="419" height="113" rx="8" class="card" />
+  <text x="16" y="28" class="title">Most used languages (public repos)</text>
+  <clipPath id="bar"><rect x="16" y="40" width="388" height="8" rx="4" /></clipPath>
+  <g clip-path="url(#bar)">
+    <rect x="16.00" y="40" width="307.30" height="8" fill="#4F5D95" />
+    <line x1="323.30" y1="40" x2="323.30" y2="48" class="sep" />
+    <rect x="323.30" y="40" width="32.98" height="8" fill="#f1e05a" />
+    <line x1="356.28" y1="40" x2="356.28" y2="48" class="sep" />
+    <rect x="356.28" y="40" width="18.62" height="8" fill="#e34c26" />
+    <line x1="374.90" y1="40" x2="374.90" y2="48" class="sep" />
+    <rect x="374.90" y="40" width="17.07" height="8" fill="#89e051" />
+    <line x1="391.97" y1="40" x2="391.97" y2="48" class="sep" />
+    <rect x="391.97" y="40" width="12.03" height="8" fill="#8c8c8c" />
+  </g>
+  <circle cx="21.0" cy="68" r="5" fill="#4F5D95" />
+  <text x="32.0" y="72" class="lang">PHP</text>
+  <text x="61.6" y="72" class="pct">79.2%</text>
+  <circle cx="118.6" cy="68" r="5" fill="#f1e05a" />
+  <text x="129.6" y="72" class="lang">JavaScript</text>
+  <text x="209.6" y="72" class="pct">8.5%</text>
+  <circle cx="260.2" cy="68" r="5" fill="#e34c26" />
+  <text x="271.2" y="72" class="lang">HTML</text>
+  <text x="308.0" y="72" class="pct">4.8%</text>
+  <circle cx="21.0" cy="90" r="5" fill="#89e051" />
+  <text x="32.0" y="94" class="lang">Shell</text>
+  <text x="76.0" y="94" class="pct">4.4%</text>
+  <circle cx="126.6" cy="90" r="5" fill="#8c8c8c" />
+  <text x="137.6" y="94" class="lang">Other</text>
+  <text x="181.6" y="94" class="pct">3.1%</text>
 </svg>

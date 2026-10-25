@@ -1,17 +1,68 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="420" height="185" viewBox="0 0 420 185">
-  <!-- generated_at: 2026-10-23T17:33:51Z -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="en" lang="en" width="420" height="114" viewBox="0 0 420 114" role="img" aria-labelledby="stats-title stats-desc">
+  <!-- generated_at: 2026-10-25T20:18:26Z -->
+  <title id="stats-title">Stanislas-Poisson · GitHub</title>
+  <desc id="stats-desc">Repos 13, Gists 3, Stars 89, Followers 26</desc>
   <style>
-    .title { font: 600 16px sans-serif; fill: #333; }
-  </style>
-  <rect width="420" height="185" rx="8" fill="#fff" stroke="#e1e4e8" />
-  <text x="20" y="28" class="title">Stanislas-Poisson · GitHub Stats</text>
-  
-  <text x="20" y="55.0" font-family="sans-serif" font-size="14" fill="#555">Repos publics :</text>
-  <text x="260" y="55.0" font-family="sans-serif" font-size="14" font-weight="600" fill="#0969da">13</text>
-  <text x="20" y="85.0" font-family="sans-serif" font-size="14" fill="#555">Gists publics :</text>
-  <text x="260" y="85.0" font-family="sans-serif" font-size="14" font-weight="600" fill="#0969da">3</text>
-  <text x="20" y="115.0" font-family="sans-serif" font-size="14" fill="#555">Total stars :</text>
-  <text x="260" y="115.0" font-family="sans-serif" font-size="14" font-weight="600" fill="#0969da">89</text>
-  <text x="20" y="145.0" font-family="sans-serif" font-size="14" fill="#555">Followers :</text>
-  <text x="260" y="145.0" font-family="sans-serif" font-size="14" font-weight="600" fill="#0969da">26</text>
+    svg {
+      --_bg: #ffffff; --_ink: #1f2328; --_tile: #e2e6ea; --_muted: #59636e;
+      --_line: #d0d7de; --_accent: #0969da;
+    }
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --_bg: #0d1117; --_ink: #e6edf3; --_tile: #262c34; --_muted: #9198a1;
+        --_line: #30363d; --_accent: #58a6ff;
+      }
+    }
+    @supports (color: light-dark(#fff, #000)) {
+      svg {
+        color-scheme: light dark;
+        --_bg: var(--card-bg, light-dark(#ffffff, #0d1117));
+        --_ink: var(--card-ink, light-dark(#1f2328, #e6edf3));
+      }
+    }
+    @supports (color: color-mix(in oklab, red, blue)) {
+      svg {
+        --_tile: color-mix(in oklab, var(--_ink) 12%, var(--_bg));
+        --_muted: color-mix(in oklab, var(--_ink) 72%, var(--_bg));
+        --_line: color-mix(in oklab, var(--_ink) 15%, var(--_bg));
+        --_accent: color-mix(in oklab, var(--_ink) 45%, #0969da);
+      }
+      @media (prefers-contrast: more) {
+        svg {
+          --_muted: color-mix(in oklab, var(--_ink) 90%, var(--_bg));
+          --_line: color-mix(in oklab, var(--_ink) 45%, var(--_bg));
+          --_tile: color-mix(in oklab, var(--_ink) 20%, var(--_bg));
+          --_accent: color-mix(in oklab, var(--_ink) 70%, #0969da);
+        }
+      }
+    }
+    .card { fill: var(--_bg); stroke: var(--_line); }
+    .tile { fill: var(--_tile); }
+    .sep { stroke: var(--_bg); stroke-width: 2; }
+    text { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; fill: var(--_ink); }
+    .title { font-size: 15px; font-weight: 600; }
+    .value { font-size: 20px; font-weight: 700; fill: var(--_accent); }
+    .label, .pct { font-size: 12px; fill: var(--_muted); }
+    .lang { font-size: 12px; font-weight: 600; }
+    /* Forced colours (Windows high contrast): the system palette */
+    @media (forced-colors: active) {
+      .card, .tile { fill: Canvas; stroke: CanvasText; }
+      .sep { stroke: Canvas; }
+      text, .value, .label, .pct { fill: CanvasText; }
+    }
+</style>
+  <rect x="0.5" y="0.5" width="419" height="113" rx="8" class="card" />
+  <text x="16" y="28" class="title">Stanislas-Poisson · GitHub</text>
+  <rect x="16.0" y="44" width="91.0" height="58" rx="6" class="tile" />
+  <text x="61.5" y="71.0" text-anchor="middle" class="value">13</text>
+  <text x="61.5" y="89.0" text-anchor="middle" class="label">Repos</text>
+  <rect x="115.0" y="44" width="91.0" height="58" rx="6" class="tile" />
+  <text x="160.5" y="71.0" text-anchor="middle" class="value">3</text>
+  <text x="160.5" y="89.0" text-anchor="middle" class="label">Gists</text>
+  <rect x="214.0" y="44" width="91.0" height="58" rx="6" class="tile" />
+  <text x="259.5" y="71.0" text-anchor="middle" class="value">89</text>
+  <text x="259.5" y="89.0" text-anchor="middle" class="label">Stars</text>
+  <rect x="313.0" y="44" width="91.0" height="58" rx="6" class="tile" />
+  <text x="358.5" y="71.0" text-anchor="middle" class="value">26</text>
+  <text x="358.5" y="89.0" text-anchor="middle" class="label">Followers</text>
 </svg>
