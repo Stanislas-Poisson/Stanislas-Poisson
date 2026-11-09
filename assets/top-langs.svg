@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" xml:lang="en" lang="en" width="420" height="114" viewBox="0 0 420 114" role="img" aria-labelledby="langs-title langs-desc">
-  <!-- generated_at: 2026-11-02T14:37:44Z -->
+  <!-- generated_at: 2026-11-09T14:59:09Z -->
   <title id="langs-title">Most used languages (public repos)</title>
-  <desc id="langs-desc">PHP 78.6%, JavaScript 8.3%, HTML 4.7%, Shell 4.4%, Other 4.0%</desc>
+  <desc id="langs-desc">TypeScript 53.5%, PHP 21.0%, JavaScript 9.2%, Vue 8.3%, Other 8.0%</desc>
   <style>
     svg {
       --_bg: #ffffff; --_ink: #1f2328; --_tile: #e2e6ea; --_muted: #59636e;
@@ -55,29 +55,29 @@
   <text x="16" y="28" class="title">Most used languages (public repos)</text>
   <clipPath id="bar"><rect x="16" y="40" width="388" height="8" rx="4" /></clipPath>
   <g clip-path="url(#bar)">
-    <rect x="16.00" y="40" width="304.97" height="8" fill="#4F5D95" />
-    <line x1="320.97" y1="40" x2="320.97" y2="48" class="sep" />
-    <rect x="320.97" y="40" width="32.20" height="8" fill="#f1e05a" />
-    <line x1="353.17" y1="40" x2="353.17" y2="48" class="sep" />
-    <rect x="353.17" y="40" width="18.24" height="8" fill="#e34c26" />
-    <line x1="371.41" y1="40" x2="371.41" y2="48" class="sep" />
-    <rect x="371.41" y="40" width="17.07" height="8" fill="#89e051" />
-    <line x1="388.48" y1="40" x2="388.48" y2="48" class="sep" />
-    <rect x="388.48" y="40" width="15.52" height="8" fill="#8c8c8c" />
+    <rect x="16.00" y="40" width="207.58" height="8" fill="#3178c6" />
+    <line x1="223.58" y1="40" x2="223.58" y2="48" class="sep" />
+    <rect x="223.58" y="40" width="81.48" height="8" fill="#4F5D95" />
+    <line x1="305.06" y1="40" x2="305.06" y2="48" class="sep" />
+    <rect x="305.06" y="40" width="35.70" height="8" fill="#f1e05a" />
+    <line x1="340.76" y1="40" x2="340.76" y2="48" class="sep" />
+    <rect x="340.76" y="40" width="32.20" height="8" fill="#41b883" />
+    <line x1="372.96" y1="40" x2="372.96" y2="48" class="sep" />
+    <rect x="372.96" y="40" width="31.04" height="8" fill="#8c8c8c" />
   </g>
-  <circle cx="21.0" cy="68" r="5" fill="#4F5D95" />
-  <text x="32.0" y="72" class="lang">PHP</text>
-  <text x="61.6" y="72" class="pct">78.6%</text>
-  <circle cx="118.6" cy="68" r="5" fill="#f1e05a" />
-  <text x="129.6" y="72" class="lang">JavaScript</text>
-  <text x="209.6" y="72" class="pct">8.3%</text>
-  <circle cx="260.2" cy="68" r="5" fill="#e34c26" />
-  <text x="271.2" y="72" class="lang">HTML</text>
-  <text x="308.0" y="72" class="pct">4.7%</text>
-  <circle cx="21.0" cy="90" r="5" fill="#89e051" />
-  <text x="32.0" y="94" class="lang">Shell</text>
-  <text x="76.0" y="94" class="pct">4.4%</text>
-  <circle cx="126.6" cy="90" r="5" fill="#8c8c8c" />
-  <text x="137.6" y="94" class="lang">Other</text>
-  <text x="181.6" y="94" class="pct">4.0%</text>
+  <circle cx="21.0" cy="68" r="5" fill="#3178c6" />
+  <text x="32.0" y="72" class="lang">TypeScript</text>
+  <text x="112.0" y="72" class="pct">53.5%</text>
+  <circle cx="169.0" cy="68" r="5" fill="#4F5D95" />
+  <text x="180.0" y="72" class="lang">PHP</text>
+  <text x="209.6" y="72" class="pct">21.0%</text>
+  <circle cx="266.6" cy="68" r="5" fill="#f1e05a" />
+  <text x="277.6" y="72" class="lang">JavaScript</text>
+  <text x="357.6" y="72" class="pct">9.2%</text>
+  <circle cx="21.0" cy="90" r="5" fill="#41b883" />
+  <text x="32.0" y="94" class="lang">Vue</text>
+  <text x="61.6" y="94" class="pct">8.3%</text>
+  <circle cx="112.2" cy="90" r="5" fill="#8c8c8c" />
+  <text x="123.2" y="94" class="lang">Other</text>
+  <text x="167.2" y="94" class="pct">8.0%</text>
 </svg>
